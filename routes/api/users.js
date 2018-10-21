@@ -5,8 +5,16 @@ const User = require("../../models/User");
 const jsonwebtoken = require("jsonwebtoken");
 const keys = require("../../config/keys")
 const passport = require('passport');
+const validateRegisterInput = require('../../validations/register');
+const validateLoginInput = require('../../validations/login');
 
 router.post("/register", (req, res) => {
+  const { errors, isValid } = validateRegisterInput(req.body);
+
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
   User.findOne({name: req.body.name}).then(user => {
     if (user) {
       errors.name = "User already exists";
@@ -38,8 +46,15 @@ router.post("/register", (req, res) => {
 })
 
 router.post("/login", (req, res) => {
+  const { errors, isValid } = validateLoginInput(req.body);
+
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
   const email = req.body.email;
   const password = req.body.password;
+  
   User.findOne({email})
     .then(user => {
       if (!user) {
