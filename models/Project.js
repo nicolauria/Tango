@@ -11,13 +11,14 @@ const ProjectSchema = new Schema({
     required: false
   },
   managerId: {
-    type: Number,
+    type: String,
     required: true
   },
   idealProjectLength: {
-    type: Number,
+    type: String,
     required: true
-  }
-})
+  },
+  tasks: [{ type: Schema.Types.ObjectId, ref: "Task" }]
+});
 
 module.exports = Project = mongoose.model('projects', ProjectSchema);

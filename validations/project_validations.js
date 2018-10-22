@@ -17,7 +17,7 @@ module.exports = function validateProjectInput(data) {
   }
 
   if (Validator.isEmpty(data.idealProjectLength)) {
-    errors.idealProjectLegth = 'Ideal project length is required';
+    errors.idealProjectLength = 'Ideal project length is required';
   }
 
   return {
