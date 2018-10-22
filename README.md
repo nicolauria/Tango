@@ -1,6 +1,6 @@
 
 ***Background and Overview***
-Tango is a minimal viable product for planning and keeping track of project. It calculates and keeps track of the shortest time that a project can be completed, as well as determines the specific tasks necessary to complete on time in order to prevent delaying the project.
+- Tango is a minimal viable product for planning and keeping track of project. It calculates and keeps track of the shortest time that a project can be completed, as well as determines the specific tasks necessary to complete on time in order to prevent delaying the project.
 
 Tango is built on a MERN stack, utilizing the following four technologies, MongoDD, Express, React, and Node.
 
