@@ -11,7 +11,7 @@ const ProjectSchema = new Schema({
     required: false
   },
   managerId: {
-    type: Number,
+    type: String,
     required: true
   },
   idealProjectLength: {

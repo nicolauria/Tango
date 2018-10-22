@@ -29,4 +29,12 @@ router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
   })
 })
 
+router.get('/:projectId', (req, res) => {
+  project = Project.find({projectId: req.params.projectId});
+  console.log(project)
+  res.json({
+    title: project.title
+  })
+})
+
 module.exports = router;
