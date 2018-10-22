@@ -86,6 +86,4 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (req, res
   })
 })
 
-router.get("/test", (req, res) => res.send("working users"));
-
 module.exports = router;

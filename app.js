@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const users = require("./routes/api/users");
 const posts = require("./routes/api/posts");
+const projects = require("./routes/api/projects");
 const passport = require("passport");
 require("./config/passport")(passport);
 
@@ -26,3 +27,4 @@ app.use(passport.initialize());
 
 app.use("/api/users", users);
 app.use("/api/posts", posts);
+app.use("/api/projects", projects);

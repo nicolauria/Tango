@@ -1,13 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const Project = require("../../models/Project");
-const jsonwebtoken = require("jsonwebtoken");
-const keys = require("../../config/keys")
 const passport = require('passport');
-const validateProjectInput = require('../../validations/projects');
-// const validateLoginInput = require('../../validations/login');
+const validateProjectInput = require('../../validations/project_validations');
 
-router.post('/projects', passport.authenticate('jwt', {session: false}), (req, res) => {
+router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
   const { errors, isValid } = validateProjectInput(req.body);
 
   if (!isValid) {
@@ -23,18 +20,13 @@ router.post('/projects', passport.authenticate('jwt', {session: false}), (req, r
 
   newProject.save().then(project => {
     res.json({
+      id: project.id,
       title: project.title,
       description: project.description,
       managerId: project.managerId,
       idealProjectLength: project.idealProjectLegth
     })
   })
-
-  // res.json({
-  //   id: req.user.id,
-  //   name: req.user.name,
-  //   email: req.user.email
-  // })
 })
 
 module.exports = router;
