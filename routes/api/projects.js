@@ -24,7 +24,7 @@ router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
       title: project.title,
       description: project.description,
       managerId: project.managerId,
-      idealProjectLength: project.idealProjectLegth
+      idealProjectLength: project.idealProjectLength
     })
   })
 })

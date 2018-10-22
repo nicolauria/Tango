@@ -15,9 +15,10 @@ const ProjectSchema = new Schema({
     required: true
   },
   idealProjectLength: {
-    type: Number,
+    type: String,
     required: true
-  }
-})
+  },
+  tasks: [{ type: Schema.Types.ObjectId, ref: "Task" }]
+});
 
 module.exports = Project = mongoose.model('projects', ProjectSchema);
