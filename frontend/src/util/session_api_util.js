@@ -22,8 +22,8 @@ export const registerUser = (userData, history) => dispatch => {
         .then(res => {
             const { token } = res.data;
             localStorage.setItem('jwtToken', token);
-            setAuthoToken(token);
-            constDecoded = jwt_decode(token);
+            setAuthToken(token);
+            const Decoded = jwt_decode(token);
         })
         .catch(err => 
             dispatch({

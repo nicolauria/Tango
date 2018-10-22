@@ -1,9 +1,10 @@
 import {
     GET_ERRORS,
-    RECEIVE_CURRENT_USER
+    RECEIVE_CURRENT_USER,
+    CLEAR_SESSION_ERRORS
 } from '../util/session_api_util';
 
-export default sessionErrorsReducer = (state= [], action) => {
+const sessionErrorsReducer = (state= [], action) => {
     Object.freeze(state);
     switch (action.type) {
         case GET_ERRORS:
@@ -16,3 +17,5 @@ export default sessionErrorsReducer = (state= [], action) => {
             return state;
     }
 };
+
+export default sessionErrorsReducer;

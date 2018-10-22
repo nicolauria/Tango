@@ -1,4 +1,4 @@
-import {RECEIVE_CURRENT_USER} from '../actions/session_actions';
+import {RECEIVE_CURRENT_USER} from '../util/session_api_util';
 import {merge} from 'lodash';
 
 const usersReducer = (state = {}, action) => {
@@ -12,3 +12,5 @@ const usersReducer = (state = {}, action) => {
     return state;
   }
 }
+
+export default usersReducer;
