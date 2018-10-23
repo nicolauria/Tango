@@ -3,7 +3,6 @@ const router = express.Router();
 const Project = require("../../models/Project");
 const passport = require('passport');
 const validateProjectInput = require('../../validations/project_validations');
-const db = require("../../app");
 
 
 router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
