@@ -1,6 +1,6 @@
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
-const $ = window.$; 
+const $ = window.$;
 export const GET_ERRORS = 'GET_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER'
@@ -23,9 +23,10 @@ export const registerUser = (userData, history) => dispatch => {
             const { token } = res.data;
             localStorage.setItem('jwtToken', token);
             setAuthToken(token);
-            const Decoded = jwt_decode(token);
+            const decoded = jwt_decode(token);
+            dispatch(setCurrentUser(decoded))
         })
-        .catch(err => 
+        .catch(err =>
             dispatch({
                 type: GET_ERRORS,
                 payload: err.response.data
@@ -43,10 +44,10 @@ export const loginUser = userData => dispatch => {
             const decoded = jwt_decode(token);
             dispatch(setCurrentUser(decoded))
         })
-        .catch(err => 
+        .catch(err =>
             dispatch({
                 type: GET_ERRORS,
-                payload: err.response.data 
+                payload: err.response.data
             })
         );
 };

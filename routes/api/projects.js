@@ -30,6 +30,7 @@ router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
   })
 })
 
+
 router.put('/:projectId', passport.authenticate("jwt", { session: false}), (req, res)=> {
   const { errors, isValid } = validateProjectInput(req.body);
   if (!isValid) {
@@ -71,5 +72,6 @@ router.get('/:projectId', passport.authenticate('jwt', { session: false }), (req
     .then(project => res.json(project))
     .catch(err => res.status(404).json({noprojectfound: "No project found with that ID."}))
 });
+
 
 module.exports = router;
