@@ -70,7 +70,6 @@ class SessionForm extends React.Component {
   }
 
   renderErrors () {
-    debugger
     return (
       <ul>
         {
