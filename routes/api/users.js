@@ -67,7 +67,6 @@ router.post("/login", (req, res) => {
           jsonwebtoken.sign(payload, keys.secretOrKey, {expiresIn: 3600}, (err, token) => {
             res.json({
               success: true,
-              userId: user.id,
               token: 'Bearer ' + token
             })
           })
