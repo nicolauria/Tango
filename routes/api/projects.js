@@ -57,7 +57,8 @@ router.put('/:projectId', passport.authenticate("jwt", { session: false}), (req,
 });
 
 router.get("/", passport.authenticate("jwt", { session: false }), (req,res)=>{
-  Project.find({"projects.managerId": req.user.id})
+
+  Project.find({ managerId: req.user.id })
     .sort({ date: -1 })
     .then(projects => res.json(projects))
     .catch(err => 
