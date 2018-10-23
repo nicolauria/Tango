@@ -16,7 +16,8 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
         time: req.body.time,
         completed: req.body.completed,
         teamMemberId: req.body.teamMemberId,
-        projectId: req.body.projectId
+        projectId: req.body.projectId,
+        preReqs: req.body.preReqs
     })
 
     newTask.save().then(task => {

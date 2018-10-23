@@ -29,3 +29,5 @@ app.use(passport.initialize());
 app.use("/api/users", users);
 app.use("/api/projects", projects);
 app.use("/api/tasks", tasks)
+
+module.exports = db;
