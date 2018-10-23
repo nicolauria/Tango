@@ -22,7 +22,7 @@ const TaskSchema = new Schema({
     type: String,
     required: true
   },
-  preReqs: [{ type: Schema.Types.ObjectId, ref: "Task" }]
+  preReqs: [{ type: Schema.Types.ObjectId, ref: "tasks" }]
 });
 
 module.exports = Task = mongoose.model('tasks', TaskSchema);
