@@ -9,7 +9,8 @@ class SessionForm extends React.Component {
     this.state = {
       name: "",
       email: "",
-      password: ""
+      password: "",
+      password2: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.loginAsGuest = this.loginAsGuest.bind(this);
@@ -108,7 +109,7 @@ class SessionForm extends React.Component {
                 </label>
                 )
               : <div></div>
-            }
+              }
             <label> EMAIL
               <input
                 type="text"
@@ -127,6 +128,21 @@ class SessionForm extends React.Component {
                   required
                   />
               </label>
+              {
+                (this.props.formType === 'signup')
+              ? (
+                <label>CONFIRM PASSWORD
+                  <input
+                    type="password"
+                    value={this.state.password2}
+                    onChange={this.handleChange('password2')}
+                    placeholder=""
+                    required
+                    />
+                </label>
+                )
+              : <div></div>
+              }
               <br></br>
               <input id="login" className="session-submit" type="submit" onClick={this.handleSubmit} value={this.props.formType.toUpperCase()}/>
           </div>
