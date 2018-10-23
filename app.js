@@ -1,8 +1,10 @@
 const express = require("express");
 const app = express();
 const users = require("./routes/api/users");
-const posts = require("./routes/api/posts");
+const projects = require("./routes/api/projects");
+const tasks = require("./routes/api/tasks");
 const passport = require("passport");
+
 require("./config/passport")(passport);
 
 const bodyParser = require('body-parser');
@@ -25,4 +27,5 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 
 app.use("/api/users", users);
-app.use("/api/posts", posts);
+app.use("/api/projects", projects);
+app.use("/api/tasks", tasks)
