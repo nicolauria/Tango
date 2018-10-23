@@ -12,8 +12,8 @@ class SessionForm extends React.Component {
       password: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.loginAsGuest = this.loginAsGuest.bind(this);
-    this.loginAsGuestHelper = this.loginAsGuestHelper.bind(this);
+    // this.loginAsGuest = this.loginAsGuest.bind(this);
+    // this.loginAsGuestHelper = this.loginAsGuestHelper.bind(this);
   }
 
 
@@ -69,6 +69,7 @@ class SessionForm extends React.Component {
   }
 
   renderErrors () {
+    debugger
     return (
       <ul>
         {
@@ -92,7 +93,7 @@ class SessionForm extends React.Component {
 
             <p className="please-do-form">{capitalLogin} to Tango </p>
           {this.renderErrors()}
-
+          {this.props.navLink}
           <div className='session-form-manual-login'>
               {
                 (this.props.formType === 'signup')

@@ -6,6 +6,7 @@ import {AuthRoute, ProtectedRoute} from './util/route_util';
 import SplashPage from './components/splash';
 import LoginFormContainer from './components/session_form/login_form_container'
 import SignupFormContainer from './components/session_form/signup_form_container'
+import placeHolder from './components/placeholder';
 
 
 class App extends Component {
@@ -14,7 +15,7 @@ class App extends Component {
       <div>
         <AuthRoute exact path="/login" component={LoginFormContainer} />
         <AuthRoute exact path="/signup" component={SignupFormContainer} />
-        <h1>it works</h1>
+        <Route exact path="/" component={SplashPage}/>
       </div>
     );
   }
