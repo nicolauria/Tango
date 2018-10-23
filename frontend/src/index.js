@@ -8,6 +8,7 @@ import * as APIUtil from './util/session_api_util';
 //Compontents
 import configureStore from './store/store';
 import App from './App';
+import Root from './root'
 import * as serviceWorker from './serviceWorker';
 
 document.addEventListener('DOMContentLoaded', ()=> {

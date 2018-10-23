@@ -14,7 +14,7 @@ class App extends Component {
       <div>
         <AuthRoute exact path="/login" component={LoginFormContainer} />
         <AuthRoute exact path="/signup" component={SignupFormContainer} />
-        <Route path="/" component={SplashPage} />
+        <h1>it works</h1>
       </div>
     );
   }
