@@ -7,7 +7,7 @@ import * as APIUtil from './util/session_api_util';
 
 //Compontents
 import configureStore from './store/store';
-import App from './App';
+// import App from './App';
 import Root from './root'
 import * as serviceWorker from './serviceWorker';
 
@@ -28,6 +28,15 @@ document.addEventListener('DOMContentLoaded', ()=> {
     serviceWorker.register();
 })
 
+<<<<<<< HEAD
+=======
+
+// not sure what this is for we need to ask question.
+// breaks on Root because we are not passing a store when we use Provider gets mad
+// App gets mad because you can't use switch/route without using Provider or some such
+// ReactDOM.render(<Root />, document.getElementById('root'));
+
+>>>>>>> 63ef5414f4ce323287c0753e94dff658589c5812
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: http://bit.ly/CRA-PWA
