@@ -21,4 +21,4 @@ const ProjectSchema = new Schema({
   tasks: [{ type: Schema.Types.ObjectId, ref: "Task" }]
 });
 
-module.exports = Project = mongoose.model('projects', ProjectSchema, 'projects');
+module.exports = Project = mongoose.model('projects', ProjectSchema);

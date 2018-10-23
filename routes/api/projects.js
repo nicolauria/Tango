@@ -32,10 +32,9 @@ router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
 })
 
 router.get('/:projectId', passport.authenticate('jwt', { session: false }), (req,res) =>{
-  console.log("                                        ");
-  console.log("============",db.projects,"=============");
-  console.log("                                        ");
-  return db.projects.find({'_id': ObjectId(projectId)});
-})
+  Project.findById(req.params.projectId)
+    .then(project => res.json(project))
+    .catch(err => res.status(404).json({noprojectfound: "No project found with that ID."}))
+});
 
 module.exports = router;
