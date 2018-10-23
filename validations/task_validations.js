@@ -1,6 +1,5 @@
 const Validator = require('validator');
 const isEmpty = require('./is-empty');
-const isBoolean = require('./is-boolean');
 
 module.exports = function validateTaskInput(data) {
     let errors = {};

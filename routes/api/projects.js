@@ -3,6 +3,8 @@ const router = express.Router();
 const Project = require("../../models/Project");
 const passport = require('passport');
 const validateProjectInput = require('../../validations/project_validations');
+const db = require("../../app");
+
 
 router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
   const { errors, isValid } = validateProjectInput(req.body);
@@ -27,6 +29,13 @@ router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
       idealProjectLength: project.idealProjectLength
     })
   })
+})
+
+router.get('/:projectId', passport.authenticate('jwt', { session: false }), (req,res) =>{
+  console.log("                                        ");
+  console.log("============",db.projects,"=============");
+  console.log("                                        ");
+  return db.projects.find({'_id': ObjectId(projectId)});
 })
 
 module.exports = router;

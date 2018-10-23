@@ -21,7 +21,8 @@ const TaskSchema = new Schema({
     projectId: {
         type: String,
         required: true
-    }
+    },
+    preReqs: [ this ]
 });
 
 module.exports = Task = mongoose.model('tasks', TaskSchema);
