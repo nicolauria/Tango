@@ -2,7 +2,8 @@ import axios from 'axios';
 
 
 export const fetchProjects = () => {
-    return axios.get('/api/projects/')
+    return axios.get('/api/projects/',
+      { headers: { "Authorization": localStorage.jwtToken }})
 }
 
 export const fetchProject = (project_id) => {
