@@ -1,16 +1,19 @@
-import {RECEEIVE_CURRENT_USER} from '../util/session_api_util';
-import {merge} from 'lodash';
 
-const usersReducer = (state = {}, action) => {
-  Object.freeze(state);
-  switch (action.type) {
-    case RECEIVE_PRODUCTS:
+import {RECEIVE_ALL_PROJECTS, RECEIVE_PROJECT} from '../actions/projects_actions';
+import merge from 'lodash/merge';
 
-      return merge({}, state, {[action.payload.id]: action.payload})
+const ProjectsReducer = (state = {}, action) => {
+    Object.freeze(state);
+    switch(action.type){
+        case RECEIVE_ALL_PROJECTS:
+            return action.projects;
+        case RECEIVE_PROJECT:
+            return merge({}, state, {[action.project.id]: action.projecct});
+        default:
+            return state;
 
-    default:
-    return state;
-  }
+    }
 }
 
-export default usersReducer;
+export default ProjectsReducer;
+
