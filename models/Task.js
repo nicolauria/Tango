@@ -25,4 +25,12 @@ const TaskSchema = new Schema({
   preReqs: [{ type: Schema.Types.ObjectId, ref: "tasks" }]
 });
 
+TaskSchema.post('save', function (saved) {
+  console.log('function loaded')
+  Project.findByIdAndUpdate(
+    this.projectId,
+    { $push: { tasks: this } }
+  ).then(() => saved())
+});
+
 module.exports = Task = mongoose.model('tasks', TaskSchema);
