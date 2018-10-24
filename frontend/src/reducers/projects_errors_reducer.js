@@ -1,4 +1,4 @@
-import {RECEIVE_PROJECT_ERRORS, RECEIVE_ALL_PROJECTS, RECEIVE_PROJECT} from '../actions/projects_actions',
+import {RECEIVE_PROJECT_ERRORS, RECEIVE_ALL_PROJECTS, RECEIVE_PROJECT} from '../actions/projects_actions';
 
 const ProjectsErrorsReducer = (state = [], action) => {
     Object.freeze(state);

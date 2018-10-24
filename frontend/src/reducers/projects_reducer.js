@@ -5,7 +5,7 @@ const ProjectsReducer = (state = [], action) => {
     Object.freeze(state);
     switch(action.type){
         case RECEIVE_ALL_PROJECTS:
-            return action.projects,
+            return action.projects;
         case RECEIVE_PROJECT:
             return state.concat(action.project);
         default:
