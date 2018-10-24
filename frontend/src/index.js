@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import jwt_decode from 'jwt-decode';
 import * as APIUtil from './util/session_api_util';
+import * as ProjectApiUtil from './util/projects_api_util';
+import * as ProjectActions from './actions/projects_actions';
 
 
 //Compontents
@@ -23,6 +25,17 @@ document.addEventListener('DOMContentLoaded', ()=> {
             window.location.href = '/login'
         }
     }
+
+window.fetchProjectsApi = ProjectApiUtil.fetchProjects
+window.fetchProjectApi = ProjectApiUtil.fetchProject
+window.createProjectApi = ProjectApiUtil.createProject
+window.fetchProjects = ProjectActions.fetchProjects
+window.fetchProject = ProjectActions.fetchProject
+window.createProject = ProjectActions.createProject
+
+
+
+
     const root = document.getElementById('root');
     ReactDOM.render(<Root store={store} />, root);
     serviceWorker.register();

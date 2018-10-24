@@ -15,7 +15,7 @@ router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
   const newProject = new Project({
     title: req.body.title,
     description: req.body.description,
-    managerId: req.body.managerId,
+    managerId: req.user.id,
     idealProjectLength: req.body.idealProjectLength
   })
 
@@ -40,7 +40,7 @@ router.put('/:projectId', passport.authenticate("jwt", { session: false}), (req,
   Project.findByIdAndUpdate(req.params.projectId, {
     title: req.body.title,
     description: req.body.description,
-    managerId: req.body.managerId,
+    managerId: req.user.id,
     idealProjectLength: req.body.idealProjectLength
   })
     .then(project => {
