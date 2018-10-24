@@ -11,7 +11,6 @@ class ProjectForm extends React.Component{
     }
 
     render() {
-        debugger
         return(
             <div>
                 <form submit={this.handleSubmit}>
@@ -23,3 +22,4 @@ class ProjectForm extends React.Component{
     }
 }
 
+export default ProjectForm;

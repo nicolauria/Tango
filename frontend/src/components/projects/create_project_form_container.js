@@ -1,7 +1,7 @@
 import {connect} from 'react-redux'
 
-import { createProject } from '../../actions/project_actions';
-import ProjectForm from './navbar';
+import { createProject } from '../../actions/projects_actions';
+import ProjectForm from './project_form';
 
 const mapStateToProps = ({session}) => {
     return({
