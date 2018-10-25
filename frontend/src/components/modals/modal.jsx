@@ -1,11 +1,12 @@
 import React from 'react';
-import {closeModal} from '../actions/modal_actions';
+import {closeModal} from '../../actions/modal_actions';
 import {connect} from 'react-redux';
-import LoginFormContainer from './session_forms/login_form_container';
-import {Link, withRouter} from 'react-router-dom';
-import ProjectFormContainer from './products/product_show_container'
+import LoginFormContainer from '../session_form/login_form_container';
+import {Link} from 'react-router-dom';
+import CreateProjectFormContainer from '../projects/create_project_form_container';
+import './modal.css';
 
-const Modal = ({product, modal, closeModal}) => {
+const Modal = ({modal, closeModal}) => {
   if (!modal) {
     return null;
   }
@@ -15,7 +16,7 @@ const Modal = ({product, modal, closeModal}) => {
       component = <LoginFormContainer />;
       break;
     case 'project_create':
-      component = <ProjectFormContainer />;
+      component = <CreateProjectFormContainer />;
       break;
     default:
       return null;
