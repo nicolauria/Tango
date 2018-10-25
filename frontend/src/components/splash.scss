@@ -6,12 +6,16 @@ html {
     height: 610px;
     justify-content: center;
     background-image: url(backround.jpg);
-    background-size: 100%;
+    background-size: 1500px;
+    background-repeat: no-repeat;
+    background-position: center;
+    
     font-family: 'Oswald', sans-serif;
 
     img {
         height: 402px;
     }
+
     p {
         position: relative;
         top: 50px;
@@ -67,7 +71,7 @@ html {
                 border-radius: 3px;
 
                 &:hover {
-                    background-color: rgb(100, 156, 63);
+                    background-color: rgb(71,130,52);
                 }
             }
         }
