@@ -15,14 +15,13 @@ class TaskIndex extends React.Component{
                 <TaskIndexItem 
                     key={task.id} 
                     task={task} 
-                    fetchProject={this.props.fetchProject}
-                    project={this.props.projects} />
+                    fetchProject={this.props.fetchProject}/>
             );
         });
 
         return(
-            <div>
-                <h1>This is the tasks index page</h1>
+            <div className="task-index-page">
+                <h1>My Current Tasks</h1>
                 <ul>
                     {tasks}
                 </ul>
