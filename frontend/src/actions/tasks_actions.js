@@ -23,11 +23,11 @@ const receiveTaskErrors = errors => ({
 export const fetchTasks = () => dispatch => (
     TasksApiUtil.fetchTasks()
         .then(response => dispatch(receiveAllTasks(response.data)))
-        .catch(response => dispatch(receiveTaskErrors(response.errors)))
+        .catch(errors => dispatch(receiveTaskErrors(errors)))
 )
 
 export const createTask = (task) => dispatch => (
     TasksApiUtil.createTask(task)
         .then(response => dispatch(receiveTask(response.data)))
-        .catch(response => dispatch(receiveTaskErrors(response.errors)))
+        .catch(errors => dispatch(receiveTaskErrors(errors)))
 )

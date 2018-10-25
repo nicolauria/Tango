@@ -8,7 +8,7 @@ const ProjectsReducer = (state = {}, action) => {
         case RECEIVE_ALL_PROJECTS:
             return action.projects;
         case RECEIVE_PROJECT:
-            return merge({}, state, {[action.project.id]: action.projecct});
+            return merge({}, state, {[action.project.id]: action.project});
         default:
             return state;
 
