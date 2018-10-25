@@ -19,6 +19,7 @@ const receiveProject = (project) => {
 }
 
 const receiveProjectErrors = (errors) => {
+    debugger
     return ({
         type: RECEIVE_PROJECT_ERRORS,
         errors
@@ -28,17 +29,19 @@ const receiveProjectErrors = (errors) => {
 export const fetchProjects = () => dispatch => (
     ProjectApiUtil.fetchProjects()
         .then(response => dispatch(receiveAllProjects(response.data)))
-        .catch(errors => dispatch(receiveProjectErrors(errors)))   
+        .catch(errors => dispatch(receiveProjectErrors(errors.response.data)))   
 );
 
 export const fetchProject = (projectId) => dispatch => (
     ProjectApiUtil.fetchProject(projectId)
         .then(response => dispatch(receiveProject(response.data)))
-        .catch(errors => dispatch(receiveProjectErrors(errors)))   
+        .catch(errors => dispatch(receiveProjectErrors(errors.response.data)))   
 );
 
 export const createProject = (project) => dispatch => (
     ProjectApiUtil.createProject(project)
+
         .then(response => dispatch(receiveProject(response.data)))
-        .catch(errors => dispatch(receiveProjectErrors(errors)))   
+        .catch(errors => dispatch(receiveProjectErrors(errors.response.data)))   
 );
+

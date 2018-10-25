@@ -1,13 +1,16 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
+import SignupFormContainer from './session_form/signup_form_container';
+import './splash.scss';
+import logo from './logoTango.png';
 
 const SplashPage = () => {
-    return(
-        <div>
-          <Link to="/signup">Signup</Link>
-          <Link to="/login">Login</Link>
+    return (
+        <div className="splash-page">
+            <img alt="Tango" src={logo}/>
+            <p>Here is a sentence that we can change</p>
+            <SignupFormContainer />
         </div>
-    );
+        );
 }
 
 export default SplashPage;

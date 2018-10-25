@@ -6,6 +6,7 @@ import * as APIUtil from './util/session_api_util';
 import * as ProjectApiUtil from './util/projects_api_util';
 import * as ProjectActions from './actions/projects_actions';
 import * as TaskActions from './actions/tasks_actions';
+import * as TaskApiUtil from './util/tasks_api_util';
 
 
 //Compontents
