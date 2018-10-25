@@ -4,27 +4,45 @@ import NavBarContainer from './navbar/navbar_container';
 import {Link} from 'react-router-dom'
 import Modal from './modals/modal'
 import {openModal} from '../actions/modal_actions'
+import SplashPage from './splash';
+
 
 class MainApp extends React.Component{
 
 
-  render(){
+  doctorIsIn(){
     return(
-      <div>
+      <div className="main-page">
           <Modal />
-          <NavBarContainer />
           <h1>Main Page</h1>
             <button onClick={() => this.props.openModal('project_create')}>New Project</button>
             <h2>what happened</h2>
       </div>
+    )
+  }
+
+  doctorIsOut(){
+      return(
+        <div className="splash-page-outer">
+          <SplashPage />
+        </div>
+      )
+  }
+
+  render(){
+    return(
+      <div>
+        {this.props.loggedIn ? this.doctorIsIn() : this.doctorIsOut()}
+      </div>
   )}
 }
 
-// const mapStateToProp = () => {
-//   return({
-    
-//   })
-// }
+const mapStateToProps = ({session}) => {
+  return({
+    session: session,
+    loggedIn: Boolean(session.id)
+  })
+}
 
 const mapDispatchToProps = (dispatch) => {
   return({
@@ -33,4 +51,4 @@ const mapDispatchToProps = (dispatch) => {
   });
 }
 
-export default connect(null, mapDispatchToProps)(MainApp)
+export default connect(mapStateToProps, mapDispatchToProps)(MainApp)
