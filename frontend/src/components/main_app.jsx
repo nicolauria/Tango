@@ -3,21 +3,17 @@ import { Link } from 'react-router-dom'
 import ProjectShow from './project_show/project_show_container';
 import {connect} from 'react-redux'
 import NavBarContainer from './navbar/navbar_container';
-import {Link} from 'react-router-dom'
 import Modal from './modals/modal'
 import {openModal} from '../actions/modal_actions'
 
 class MainApp extends React.Component{
 
-
   render(){
     return(
       <div>
-        <Link to="/new_project">NEW PROJECT</Link>
+      <button onClick={() => this.props.openModal('project_create')}>New Project</button>
         <ProjectShow />
           <Modal />
-          <h1>Main Page</h1>
-            <button onClick={() => this.props.openModal('project_create')}>New Project</button>
       </div>
   )}
 }

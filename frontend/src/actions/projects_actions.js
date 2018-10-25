@@ -35,26 +35,26 @@ export const fetchProjects = () => dispatch => (
            err => dispatch(receiveProjectErrors(err))
 ));
 
-export const fetchProject = (project) => dispatch => (
-    ProjectApiUtil.fetchProject(project)
-        .then(
-        response => dispatch(receiveProject(response.data)),
-        err => dispatch(receiveProjectErrors(err))
-));
-
-export const createProject = (project) => dispatch => (
-    ProjectApiUtil.createProject(project)
-        .then(
-        response => dispatch(receiveProject(response.data)),
-        err => dispatch(receiveProjectErrors(err))
-));
-        .then(
-           response => dispatch(receiveAllProjects(response.data))
-           )
-        .catch(
-            err => dispatch(receiveProjectErrors(err.response.data))
-        )
-);
+// export const fetchProject = (project) => dispatch => (
+//     ProjectApiUtil.fetchProject(project)
+//         .then(
+//         response => dispatch(receiveProject(response.data)),
+//         err => dispatch(receiveProjectErrors(err))
+// ));
+//
+// export const createProject = (project) => dispatch => (
+//     ProjectApiUtil.createProject(project)
+//         .then(
+//         response => dispatch(receiveProject(response.data)),
+//         err => dispatch(receiveProjectErrors(err))
+// ));
+//         .then(
+//            response => dispatch(receiveAllProjects(response.data))
+//            )
+//         .catch(
+//             err => dispatch(receiveProjectErrors(err.response.data))
+//         )
+// );
 
 export const fetchProject = (project) => dispatch => (
     ProjectApiUtil.fetchProject(project)
