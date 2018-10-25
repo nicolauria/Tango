@@ -18,7 +18,6 @@ class App extends Component {
         <Switch>
           <AuthRoute exact path="/login" component={LoginFormContainer} />
           <AuthRoute exact path="/signup" component={SignupFormContainer} />
-          <ProtectedRoute exact path="new_project" component={CreateProjectFormContainer} />
           <ProtectedRoute exact path="/" component={MainApp} />
           <Route exact path="/" component={SplashPage}/>
         </Switch>
