@@ -27,21 +27,18 @@ const receiveProjectErrors = (errors) => {
 
 export const fetchProjects = () => dispatch => (
     ProjectApiUtil.fetchProjects()
-        .then( 
-           response => dispatch(receiveAllProjects(response.data)),
-           err => dispatch(receiveProjectErrors(err))
-));
+        .then(response => dispatch(receiveAllProjects(response.data)))
+        .catch(response => dispatch(receiveProjectErrors(response.errors)))   
+);
 
 export const fetchProject = (project) => dispatch => (
     ProjectApiUtil.fetchProject(project)
-        .then( 
-        response => dispatch(receiveProject(response.data)),
-        err => dispatch(receiveProjectErrors(err))
-));
+        .then(response => dispatch(receiveProject(response.data)))
+        .catch(response => dispatch(receiveProjectErrors(response.errors)))   
+);
 
 export const createProject = (project) => dispatch => (
     ProjectApiUtil.createProject(project)
-        .then( 
-        response => dispatch(receiveProject(response.data)),
-        err => dispatch(receiveProjectErrors(err))
-));
+        .then(response => dispatch(receiveProject(response.data)))
+        .catch(response => dispatch(receiveProjectErrors(response.errors)))   
+);

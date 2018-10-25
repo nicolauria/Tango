@@ -30,6 +30,17 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
             projectId: task.projectId
         })
     })
+
+    
 })
+
+router.get("/", passport.authenticate("jwt", { session: false }), (req, res) => {
+    Task.find({ teamMemberId: req.user.id })
+        .sort({ date: -1 })
+        .then(projects => res.json(projects))
+        .catch(err =>
+            res.status(404).json({ noprojectsfound: "No projects found" })
+        )    
+});
 
 module.exports = router;
