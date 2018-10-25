@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-
 export const fetchProjects = () => {
     return axios.get('/api/projects/')
 }
