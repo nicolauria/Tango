@@ -15,7 +15,8 @@ class TaskIndex extends React.Component{
                 <TaskIndexItem 
                     key={task.id} 
                     task={task} 
-                    fetchProject={this.props.fetchProject}/>
+                    fetchProject={this.props.fetchProject}
+                    project={this.props.projects}/>
             );
         });
 

@@ -12,15 +12,23 @@ class TaskIndexItem extends React.Component{
     }
 
     render(){
-        console.log(this.props.task.title)
-        console.log(this.props.project)
-        return(
-            <div className="task-index-item">
-                <h2>Task Title: {this.props.task.title}</h2>
-                <h3>Project: </h3>
-                <h3>Expected Time: {this.props.task.time}</h3>
-            </div>
-        )
+
+        const projectName = this.props.project[this.props.task.projectId]
+            if (projectName === undefined) {
+                return <div className="task-index-item"> </div>
+            } else {
+      
+           
+                const projectTitle = this.props.project[this.props.task.projectId].title
+         
+                return(
+                    <div className="task-index-item">
+                        <h2>Task Title: {this.props.task.title}</h2>
+                        <h3>Project: {projectTitle}</h3>
+                        <h3>Expected Time: {this.props.task.time}</h3>
+                    </div>
+                )
+            }
     }
 }
 
