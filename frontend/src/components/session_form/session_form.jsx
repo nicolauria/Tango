@@ -13,8 +13,8 @@ class SessionForm extends React.Component {
       password2: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.loginAsGuest = this.loginAsGuest.bind(this);
-    // this.loginAsGuestHelper = this.loginAsGuestHelper.bind(this);
+    this.loginAsGuest = this.loginAsGuest.bind(this);
+    this.loginAsGuestHelper = this.loginAsGuestHelper.bind(this);
   }
 
 
@@ -31,35 +31,35 @@ class SessionForm extends React.Component {
 
 // this code is for ghost login works well we just need to put buttons on our form somewhere for it
 
-//   loginAsGuest(e) {
-//     e.preventDefault();
-//     const button = document.getElementById('login');
-//     const guestEmail = 'test1@gmail.com'.split('');
-//     const guestPassword = 'password'.split('');
-//     this.setState({email: '', password: ''}, () =>
-//       this.loginAsGuestHelper(guestEmail, guestPassword, button)
-//     );
-//   }
+  loginAsGuest(e) {
+    e.preventDefault();
+    const button = document.getElementById('login');
+    const guestEmail = 'joseph1@gmail.com'.split('');
+    const guestPassword = 'password'.split('');
+    this.setState({email: '', password: ''}, () =>
+      this.loginAsGuestHelper(guestEmail, guestPassword, button)
+    );
+  }
 
-//   loginAsGuestHelper(guestEmail, guestPassword, button){
-//     if (guestEmail.length > 0) {
-//       this.setState(
-//         { email: this.state.email + guestEmail.shift() }, () => {
-//           window.setTimeout( () =>
-//             this.loginAsGuestHelper(guestEmail, guestPassword, button), 75);
-//         }
-//       );
-//     } else if (guestPassword.length > 0) {
-//       this.setState(
-//         { password: this.state.password + guestPassword.shift() }, () => {
-//           window.setTimeout( () =>
-//             this.loginAsGuestHelper(guestEmail, guestPassword, button), 100);
-//         }
-//       );
-//     } else {
-//       button.click()
-//     }
-//   }
+  loginAsGuestHelper(guestEmail, guestPassword, button){
+    if (guestEmail.length > 0) {
+      this.setState(
+        { email: this.state.email + guestEmail.shift() }, () => {
+          window.setTimeout( () =>
+            this.loginAsGuestHelper(guestEmail, guestPassword, button), 75);
+        }
+      );
+    } else if (guestPassword.length > 0) {
+      this.setState(
+        { password: this.state.password + guestPassword.shift() }, () => {
+          window.setTimeout( () =>
+            this.loginAsGuestHelper(guestEmail, guestPassword, button), 100);
+        }
+      );
+    } else {
+      button.click()
+    }
+  }
 
   handleChange(type) {
     return (event) => {
@@ -94,6 +94,7 @@ class SessionForm extends React.Component {
 
             <p className="please-do-form">{capitalLogin} to Tango </p>
           {this.renderErrors()}
+          <button onClick={this.loginAsGuest}>DEMO LOGIN</button>
           {this.props.navLink}
           <div className='session-form-manual-login'>
               {
