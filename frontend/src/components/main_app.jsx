@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import ProjectShow from './project_show/project_show_container';
+import ProjectShow from './project_index/project_show_container';
 import {connect} from 'react-redux'
 import NavBarContainer from './navbar/navbar_container';
 import Modal from './modals/modal'
