@@ -11,7 +11,7 @@ router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
   if (!isValid) {
     return res.status(400).json(errors);
   }
-  
+
   const newProject = new Project({
     title: req.body.title,
     description: req.body.description,
@@ -63,23 +63,33 @@ router.get("/", passport.authenticate("jwt", { session: false }), (req,res)=>{
     .then(tasks => {
       tasks.forEach(task => userTasks.push(task.projectId))
     })
-    .then(() => 
+    .then(() =>
       Project.find({ $or: [
         { managerId: req.user.id },
         { _id: { $in: userTasks} }
         ]
       })
+        .populate("tasks")
         .sort({ date: -1 })
         .then(projects => res.json(projects))
-        .catch(err => 
+        .catch(err =>
           res.status(404).json({ noprojectsfound: "No projects found" })
         )
     )
 });
 
 router.get('/:projectId', passport.authenticate('jwt', { session: false }), (req,res) =>{
+  let users = [];
   Project.findById(req.params.projectId)
-    .then(project => res.json(project))
+    .populate("tasks")
+    .then(project => {
+      project.tasks.forEach(task => {
+        User.findById(task.teamMemberId)
+        .then(user => users.push(user))
+      })
+      return project
+    })
+    .then((project) => res.json({project: project, users: users}))
     .catch(err => res.status(404).json({noprojectfound: "No project found with that ID."}))
 });
 

@@ -16,4 +16,3 @@ const ProjectsReducer = (state = {}, action) => {
 }
 
 export default ProjectsReducer;
-
