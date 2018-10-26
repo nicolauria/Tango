@@ -11,7 +11,6 @@ class MainApp extends React.Component{
   render(){
     return(
       <div>
-        <button onClick={() => this.props.openModal('project_create')}>New Project</button>
         <ProjectShow />
         <Modal />
       </div>

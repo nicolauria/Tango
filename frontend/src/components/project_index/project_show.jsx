@@ -61,12 +61,13 @@ class ProjectShow extends React.Component {
       projects = null;
     }
 
-    // console.log(this.props.userProjects)
+    debugger
     return(
       <div className="projects-index">
-        <h1>All Projcets</h1>
+        <h1 className="recent-projects">Recent Projcets</h1>
+        <button onClick={() => this.props.openModal('project_create')}>New Project</button>
         <div className="project-items-container">
-          { projects }
+          { projects === null ? null : projects.slice(0, 4) }
         </div>
         {this.displayTasks()}
       </div>
