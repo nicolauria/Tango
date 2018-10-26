@@ -10,7 +10,7 @@ import NavbarContainer from './components/navbar/navbar_container';
 import CreateProjectFormContainer from './components/projects/create_project_form_container';
 import TaskIndexContainer from './components/tasks/tasks_index_container';
 import WebChartContainer from './components/webs/web_container'
-
+import WebCanvasContainer from './components/webs/web_canvas_container'
 
 class App extends Component {
   render() {
@@ -24,6 +24,7 @@ class App extends Component {
           <ProtectedRoute exact path="/new_project" component={CreateProjectFormContainer} />
           <ProtectedRoute exact path="/web" component={WebChartContainer} />
           <ProtectedRoute exact path="/" component={MainApp} />
+          <Route path="/canvas" component={WebCanvasContainer} />
         </Switch>
       </div>
     );
