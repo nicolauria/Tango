@@ -1,23 +1,39 @@
 import React from 'react';
-
-import { Link } from 'react-router-dom'
 import ProjectShow from './project_index/project_show_container';
-
-import {connect} from 'react-redux'
-import Modal from './modals/modal'
-import {openModal} from '../actions/modal_actions'
+import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { openModal } from '../actions/modal_actions';
 
 class MainApp extends React.Component{
 
   render(){
+    let redirect;
+    if (this.props.loggedIn){
+      redirect = (
+        <div>
+          <ProjectShow/>
+        </div>
+      )
+    } else {
+      redirect = (
+        <div>
+          <Redirect to="/splash"/>
+        </div>
+      )
+    }
     return(
       <div>
-        <ProjectShow />
-        <Modal />
+        {redirect}
       </div>
   )}
 }
 
+
+const mapStateToProps = state => {
+  return ({
+    loggedIn: Boolean(state.session.id)  
+  })
+};
 
 const mapDispatchToProps = (dispatch) => {
   return({
@@ -26,4 +42,4 @@ const mapDispatchToProps = (dispatch) => {
   });
 }
 
-export default connect(null, mapDispatchToProps)(MainApp)
+export default connect(mapStateToProps, mapDispatchToProps)(MainApp)

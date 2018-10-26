@@ -12,6 +12,7 @@ import Modal from './components/modals/modal';
 import NavBarContainer from './components/navbar/navbar_container';
 
 
+
 class App extends Component {
   render() {
     return (
@@ -19,12 +20,14 @@ class App extends Component {
         <Modal/>
         <NavBarContainer />
 
+        <Switch>
           <AuthRoute exact path="/login" component={LoginFormContainer} />
           <AuthRoute exact path="/signup" component={SignupFormContainer} />
-          <AuthRoute exact path="/" component={SplashPage} />
-          <ProtectedRoute exact path="/" component={MainApp} />
+          <AuthRoute exact path="/splash" component={SplashPage} />
           <ProtectedRoute exact path="/tasks" component={TaskIndexContainer}/>
           <ProtectedRoute exact path="/new_project" component={CreateProjectFormContainer} />
+          <Route path="/" component={MainApp} />
+        </Switch>
 
       </div>
     );
