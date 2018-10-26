@@ -1,5 +1,6 @@
 import React from 'react';
 import dropDownImg from "./dropDownImg.png";
+import { Link } from 'react-router-dom';
 
 class ProfileDrop extends React.Component {
     constructor(props){
@@ -21,6 +22,8 @@ class ProfileDrop extends React.Component {
 
             {menuDropped && <ul className="drop-menu">
                 <li className="greet">Hello, {currentUserName}</li>
+                <li className="links"><Link to="/main">Projects</Link></li>
+                <li className="links"><Link to="/tasks">My Tasks</Link></li>
                 <li className="links" onClick={logout}>Logout</li>
               </ul>}
           </div>;
