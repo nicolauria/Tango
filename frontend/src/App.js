@@ -14,11 +14,12 @@ class App extends Component {
     return (
       <div>
         <NavbarContainer />
+
         <Switch>
           <AuthRoute exact path="/login" component={LoginFormContainer} />
           <AuthRoute exact path="/signup" component={SignupFormContainer} />
           <Route path="/" component={SplashPage} />
-          <ProtectedRoute exact path="/" component={MainApp} />
+          <ProtectedRoute path="/" component={MainApp} />
         </Switch>
       </div>
     );

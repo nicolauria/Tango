@@ -14,14 +14,16 @@ class ProfileDrop extends React.Component {
     }
 
     render(){
+        let { logout, currentUserName } = this.props;
         const { menuDropped } = this.state;
-        return (
-            <div onClick={this.toggleDrop} className="dropDown">
-                <img alt="Profile" src={dropDownImg} />
+        return <div onClick={this.toggleDrop} className={menuDropped ? "drop-down dropped" : "drop-down"}>
+            <img alt="Profile" src={dropDownImg} />
 
-                {menuDropped && <ul><li>Hellloooooo</li></ul>}
-            </div>
-        )
+            {menuDropped && <ul className="drop-menu">
+                <li className="greet">Hello, {currentUserName}</li>
+                <li className="links" onClick={logout}>Logout</li>
+              </ul>}
+          </div>;
     }
 }
 
