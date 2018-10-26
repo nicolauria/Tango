@@ -37,10 +37,39 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
 router.get("/", passport.authenticate("jwt", { session: false }), (req, res) => {
     Task.find({ teamMemberId: req.user.id })
         .sort({ date: -1 })
-        .then(projects => res.json(projects))
+        .then(tasks => res.json(tasks))
         .catch(err =>
             res.status(404).json({ noprojectsfound: "No projects found" })
         )    
 });
+
+router.put('/:taskId', passport.authenticate("jwt", { session: false}), (req, res)=> {
+    const { errors, isValid } = validateTaskInput(req.body);
+    if (!isValid) {
+      return res.status(400).json(errors);
+    }
+  
+    Task.findByIdAndUpdate(req.params.taskId, {
+      title: req.body.title,
+      time: req.body.time,
+      teamMemberId: req.user.id,
+      projectId: req.body.projectId,
+      preReqs: req.body.preReqs,
+      completed: req.body.completed
+    })
+      .then(task => {
+        res.json({
+            title: req.body.title,
+            time: req.body.time,
+            teamMemberId: req.user.id,
+            projectId: req.body.projectId,
+            preReqs: req.body.preReqs,
+            completed: req.body.completed
+        });
+      })
+      .catch(err =>
+        res.status(404).json({ notasksfound: "No tasks found", err })
+      );
+  });
 
 module.exports = router;
