@@ -1,0 +1,112 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(255, 255, 255);
+  border-radius: 1px;
+  height: 84px;
+
+  .text-logo {
+    width: 136px;
+    height: 84px;
+
+    img {
+      width: 136px;
+      height: 84px;
+    }
+  }
+  .drop-down {
+    height: 84px;
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+
+    &:hover {
+      cursor: pointer;
+
+      img{
+        background-color: rgba(151, 216, 107, 0.233);
+        border-radius: 8px;
+      }
+    }
+
+    img {
+      height: 50px;
+      width: 50px;
+    }
+  }
+
+  .dropped {
+    background-color: rgba(252, 185, 42, 0.233);
+    
+    img {
+      background-color: rgba(151, 216, 107, 0.233);
+      border-radius: 8px;
+    }
+
+    .drop-menu{
+      position: absolute;
+      top: 68px;
+      z-index: 10;
+      border: 1px solid black;
+      border-radius: 3px;
+      background-color: white;
+      list-style: none;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+      width: 200px;
+      height: 73px;
+      right: 0px;
+      padding: 8px 5px 13px 19px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      
+
+      li {
+        position: relative;
+        bottom: 3px;
+        right: 7px;
+        padding: 5px 10px;
+        border-bottom: 1px solid black;
+        line-height: 34px;
+        width: 200px;
+      }
+      .greet {
+          position: relative;
+          bottom: 3px;
+          font-weight: bold;
+          cursor: auto;
+        }
+
+      .links {
+        border-bottom: 0;
+        cursor: pointer;
+        width: 204px;;
+        border-radius: 3px;
+
+        &:hover {
+          background-color: rgba(252, 185, 42, 0.1);
+        }
+      }
+    }
+  }
+
+  .nav-right {
+
+    a {
+      text-decoration: none;
+      display: inline-block;
+      height: 85px;
+      width: 150px;
+      line-height: 85px;
+      color: black;
+      text-align: center;
+
+      &:hover {
+        background-color: rgba(252, 185, 42, 0.233);
+      }
+    }
+  }
+}

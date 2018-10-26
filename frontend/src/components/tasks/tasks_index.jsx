@@ -9,6 +9,11 @@ class TaskIndex extends React.Component{
         this.props.fetchTasks();
     }
 
+    componentDidUpdate(){
+        this.props.fetchTasks();
+    }
+
+
     render(){
         const tasks = Object.values(this.props.tasks).map( task => {
             return(
@@ -16,16 +21,19 @@ class TaskIndex extends React.Component{
                     key={task.id} 
                     task={task} 
                     fetchProject={this.props.fetchProject}
-                    project={this.props.projects}/>
+                    project={this.props.projects}
+                    openModal={this.props.openModal}/>
             );
         });
 
         return(
             <div className="task-index-page">
                 <h1>My Current Tasks</h1>
-                <ul>
-                    {tasks}
-                </ul>
+                <div className="tasks">
+                    <ul>
+                        {tasks}
+                    </ul>
+                </div>
             </div>
         );
 

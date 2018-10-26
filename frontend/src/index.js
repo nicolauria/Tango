@@ -36,6 +36,8 @@ window.fetchProject = ProjectActions.fetchProject
 window.createProject = ProjectActions.createProject
 window.fetchTasks = TaskActions.fetchTasks
 window.createTask = TaskActions.createTask
+window.updateTaskApi = TaskApiUtil.updateTask
+window.updateTask = TaskActions.updateTask
 
 
 

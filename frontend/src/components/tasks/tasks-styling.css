@@ -1,13 +1,33 @@
 .task-index-page {
     height: 100%;
-    width: 80vw;
+    width: 100%;
+    border: 1px solid red;
+
 }
 
 
 .task-index-item {
+    float: left;
+    overflow-wrap: normal;
     border: 1px solid black;
     width: 175px;
-    height: 175px;
+    height: 200px;
     margin: 20px;
     padding: 10px;
+}
+.task-index-item > h3 {
+    margin-top: 0px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid grey;
+}
+
+.tasks {
+    display: flex;
+    height: 100%;
+    border: 1px solid red;
+    width: 100%;
+}
+
+.task-edit-link {
+    font-size: 10px;
 }
