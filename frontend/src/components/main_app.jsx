@@ -6,6 +6,9 @@ import { openModal } from '../actions/modal_actions';
 
 class MainApp extends React.Component{
 
+
+  
+
   render(){
     let redirect;
     if (this.props.loggedIn){

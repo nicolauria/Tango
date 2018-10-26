@@ -8,6 +8,7 @@ import SignupFormContainer from './components/session_form/signup_form_container
 import MainApp from './components/main_app';
 import CreateProjectFormContainer from './components/projects/create_project_form_container';
 import TaskIndexContainer from './components/tasks/tasks_index_container';
+import WebChartContainer from './components/webs/web_container'
 import Modal from './components/modals/modal';
 import NavBarContainer from './components/navbar/navbar_container';
 
