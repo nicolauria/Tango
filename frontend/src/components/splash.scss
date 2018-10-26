@@ -1,0 +1,80 @@
+html {
+    height: 100%;
+}
+.splash-page {
+    display: flex;
+    height: 610px;
+    justify-content: center;
+    background-image: url(backround.jpg);
+    background-size: 1500px;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    font-family: 'Oswald', sans-serif;
+
+    img {
+        height: 402px;
+    }
+
+    p {
+        position: relative;
+        top: 50px;
+        right: 70px;
+        min-width: 300px;
+        font-size: 30px;
+        margin: 20px;
+    }
+    
+    form {
+        position: relative;
+        top: 40px;
+        right: 30px;
+        padding: 10px;
+        background-color: white;
+        box-shadow: 3px 3px rgba(0, 0, 0, 0.3);
+        border-radius: 4px;
+        width: 305px;
+        z-index: 4;
+
+        input[type="text"], input[type="password"] {
+            width: 285px;
+            height: 30px;
+            margin: 7px 0;
+            border: 1px solid  rgb(252,187,42);
+            border-radius: 4px;
+            padding: 3px 10px;
+            font-size: 20px;
+
+            &:focus {
+                outline-color: rgb(151, 216, 107);
+                background-color: rgb(245, 245, 245);
+            }
+        }
+        p {
+            display: none;
+        }
+        a{
+            display: none;
+        }
+
+        .session-form-manual-login {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            position: relative;
+            bottom: 10px;
+
+            input[type="submit"] {
+                background-color: rgb(130, 221, 88);
+                padding: 10px;
+                font-size: 20px;
+                border-radius: 3px;
+
+                &:hover {
+                    background-color: rgb(71,130,52);
+                }
+            }
+        }
+    }
+
+}

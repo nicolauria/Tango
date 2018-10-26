@@ -30,6 +30,8 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
             projectId: task.projectId
         })
     })
+
+    
 })
 
 router.get("/", passport.authenticate("jwt", { session: false }), (req, res) => {
