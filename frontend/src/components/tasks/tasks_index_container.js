@@ -1,6 +1,7 @@
 import {connect} from 'react-redux';
 import { fetchTasks } from '../../actions/tasks_actions';
 import {fetchProject } from '../../actions/projects_actions';
+import {openModal} from '../../actions/modal_actions';
 import TasksIndex from './tasks_index';
 
 const mapStateToProps = (state) => {
@@ -13,7 +14,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return ({
         fetchTasks: () => dispatch(fetchTasks()),
-        fetchProject: (projectId) => dispatch(fetchProject(projectId))
+        fetchProject: (projectId) => dispatch(fetchProject(projectId)),
+        openModal: (modal, data) => dispatch(openModal(modal, data))
     })
 }
 

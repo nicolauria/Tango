@@ -1,8 +1,9 @@
 import React from 'react';
+
 import { Link } from 'react-router-dom'
-import ProjectShow from './project_show/project_show_container';
+import ProjectShow from './project_index/project_show_container';
+
 import {connect} from 'react-redux'
-import NavBarContainer from './navbar/navbar_container';
 import Modal from './modals/modal'
 import {openModal} from '../actions/modal_actions'
 import SplashPage from './splash';
@@ -34,6 +35,8 @@ class MainApp extends React.Component{
     return(
       <div>
         {this.props.loggedIn ? this.doctorIsIn() : this.doctorIsOut()}
+        <ProjectShow />
+        <Modal />
       </div>
   )}
 }
