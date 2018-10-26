@@ -24,12 +24,11 @@
     position: relative;
 
     &:hover {
-      border-left: 1px solid rgba(71,130,52, 0.5);
-      border-right: 1px solid rgba(71,130,52, 0.5);
+      cursor: pointer;
 
       img{
-        position: relative;
-        left: 1px;
+        background-color: rgba(151, 216, 107, 0.233);
+        border-radius: 8px;
       }
     }
 
@@ -41,15 +40,12 @@
 
   .dropped {
     background-color: rgba(252, 185, 42, 0.233);
-    border-left: 1px solid rgba(71,130,52, 0.5);
-    border-right: 1px solid rgba(71,130,52, 0.5);
-
+    
     img {
-      position: relative;
-      left: 1px;
+      background-color: rgba(151, 216, 107, 0.233);
+      border-radius: 8px;
     }
 
-      
     .drop-menu{
       position: absolute;
       top: 68px;
