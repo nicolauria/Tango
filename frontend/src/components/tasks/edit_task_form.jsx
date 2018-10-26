@@ -17,27 +17,37 @@ class EditTaskForm extends React.Component {
       preReqs: task.preReqs
     }
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.updateForm = this.updateForm.bind(this);
   }
 
   handleSubmit(e){
     e.preventDefault();
-    debugger
     this.props.updateTask(this.state);
     this.props.fetchTasks();
     this.props.closeModal();
   }
 
-  
-
-
   updateForm(field){
+    // console.log(e.currentTarget)
     return (
-      (e) => this.setState({[field]: e.target.value})
+      (e) => {
+        this.setState({[field]: e.target.value})
+      }
+    );
+  }
+
+  updateBoolean(field){
+    return (
+      (e) => {
+
+        this.setState({[field]: (e.target.value === "true")})
+      }
     );
   }
 
 
   render(){
+    console.log(this.state.completed)
     return(
       <div className="task-edit-form">
         <div className="task-edit-heading">Update Task</div>
@@ -45,14 +55,14 @@ class EditTaskForm extends React.Component {
           <form className="form-review" onSubmit={this.handleSubmit}>
             <label className="review-label" >Expected Time</label>
             <input
-              type="text"
+              type="number"
               value={this.state.time}
               onChange={this.updateForm('time')} />
               <br/>
               <div className="radio-inputs">
-                <label><input type="radio" name="progress" value="false" checked={this.state.completed === false} onChange={this.updateForm("completed")} />In Progress</label>
+                <label><input type="radio" name="progress" value="false" checked={this.state.completed === false} onChange={this.updateBoolean("completed")} />In Progress</label>
                 <br/>
-                <label><input type="radio" name="progress" value="true" checked={this.state.completed === true} onChange={this.updateForm("completed")} />Completed</label>
+                <label><input type="radio" name="progress" value="true" checked={this.state.completed === true} onChange={this.updateBoolean("completed")} />Completed</label>
                 <br/>
                 <label className="review-label">Notes</label>
                 
