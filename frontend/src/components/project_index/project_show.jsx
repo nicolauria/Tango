@@ -31,13 +31,16 @@ class ProjectShow extends React.Component {
         </div>
       )
     })
-    return <div className="task-items-container">{tasks}</div>
+    return <div className="task-items-container">
+    { tasks.length === 0 ?
+      <div className="no-tasks-yet">no tasks added yet</div> : tasks}</div>
   }
 
   toggleTasks(e, project) {
     e.preventDefault()
     e.stopPropagation();
-    this.setState({currentProject: project}, () => console.log(this.state))
+    this.setState({currentProject: project})
+    // this.props.fetchProject(project._id)
   }
 
   render() {
@@ -61,15 +64,20 @@ class ProjectShow extends React.Component {
       projects = null;
     }
 
-    debugger
     return(
       <div className="projects-index">
         <h1 className="recent-projects">Recent Projcets</h1>
         <button onClick={() => this.props.openModal('project_create')}>New Project</button>
-        <div className="project-items-container">
-          { projects === null ? null : projects.slice(0, 4) }
-        </div>
-        {this.displayTasks()}
+            <div className="project-items-container">
+              { projects === null ? null : projects.slice(0, 4) }
+            </div>
+            <div className="project-details-tasks">
+              <div className="project-details">
+                <h2 className="project-name">Tasks</h2>
+                <button>Add Task</button>
+              </div>
+              {this.displayTasks()}
+            </div>
       </div>
     )
   }

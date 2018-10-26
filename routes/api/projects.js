@@ -79,8 +79,17 @@ router.get("/", passport.authenticate("jwt", { session: false }), (req,res)=>{
 });
 
 router.get('/:projectId', passport.authenticate('jwt', { session: false }), (req,res) =>{
+  let users = [];
   Project.findById(req.params.projectId)
-    .then(project => res.json(project))
+    .populate("tasks")
+    .then(project => {
+      project.tasks.forEach(task => {
+        User.findById(task.teamMemberId)
+        .then(user => users.push(user))
+      })
+      return project
+    })
+    .then((project) => res.json({project: project, users: users}))
     .catch(err => res.status(404).json({noprojectfound: "No project found with that ID."}))
 });
 
