@@ -26,7 +26,6 @@ const TaskSchema = new Schema({
 });
 
 TaskSchema.post('save', function (saved) {
-  console.log('function loaded')
   Project.findByIdAndUpdate(
     this.projectId,
     { $push: { tasks: this } }
