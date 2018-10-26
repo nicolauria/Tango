@@ -9,7 +9,7 @@ import MainApp from './components/main_app';
 import NavbarContainer from './components/navbar/navbar_container';
 import CreateProjectFormContainer from './components/projects/create_project_form_container';
 import TaskIndexContainer from './components/tasks/tasks_index_container';
-import NavBarContainer from './components/navbar/navbar_container';
+import WebChartContainer from './components/webs/web_container'
 
 
 class App extends Component {
@@ -22,6 +22,7 @@ class App extends Component {
           <AuthRoute exact path="/signup" component={SignupFormContainer} />
           <ProtectedRoute exact path="/tasks" component={TaskIndexContainer}/>
           <ProtectedRoute exact path="/new_project" component={CreateProjectFormContainer} />
+          <ProtectedRoute exact path="/web" component={WebChartContainer} />
           <ProtectedRoute exact path="/" component={MainApp} />
         </Switch>
       </div>
