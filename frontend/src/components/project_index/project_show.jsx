@@ -40,7 +40,8 @@ class ProjectShow extends React.Component {
     e.preventDefault()
     e.stopPropagation();
     // this.setState({currentProject: project})
-    this.props.fetchProject(project._id)
+    // this.props.fetchProject(project._id)
+    this.props.history.push(`/projects/${project._id}`)
   }
 
   getTeamMemberCount(project) {
