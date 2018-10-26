@@ -1,9 +1,43 @@
 import React from 'react';
 import './project_show.css';
+import { Link } from 'react-router-dom';
 
 class ProjectShow extends React.Component {
+  constructor(props) {
+    super(props);
+    this.displayTasks.bind(this);
+    this.state = {
+      currentProject: null
+    }
+  }
+
   componentDidMount() {
     this.props.fetchProjects();
+  }
+
+  displayTasks() {
+    if (this.state.currentProject === null) return null;
+    const tasks = this.state.currentProject.tasks.map(task => {
+      return(
+        <div className="task-item">
+          <div>
+            <span className="task-item-name">{task.title}</span>
+            <span className="task-assigned-to">assigned to:</span>
+            <span className="task-owner-name">William</span>
+          </div>
+          <div>
+            <span className="complete-task">mark complete</span>
+          </div>
+        </div>
+      )
+    })
+    return <div className="task-items-container">{tasks}</div>
+  }
+
+  toggleTasks(e, project) {
+    e.preventDefault()
+    e.stopPropagation();
+    this.setState({currentProject: project}, () => console.log(this.state))
   }
 
   render() {
@@ -11,7 +45,7 @@ class ProjectShow extends React.Component {
     if (this.props.userProjects.length > 0) {
       projects = this.props.userProjects.map(project => {
         return(
-          <div className="project-item">
+          <div onClick={(e) => this.toggleTasks(e, project)} className="project-item">
             <span className="project-item-name">{project.title}</span>
             <span className="project-task-count">
               Tasks: {project.tasks.length}</span><br />
@@ -34,7 +68,7 @@ class ProjectShow extends React.Component {
         <div className="project-items-container">
           { projects }
         </div>
-        <h1>Recent Activity</h1>
+        {this.displayTasks()}
       </div>
     )
   }

@@ -49,3 +49,52 @@
   bottom: 10px;
   right: 18px;
 }
+
+/* Tasks */
+
+.task-items-container {
+  width: 75%;
+  margin: 0 auto;
+  margin-top: 30px;
+  overflow: scroll;
+  height: 350px;
+}
+
+.task-item {
+  padding: 20px;
+  border-bottom: 1px solid #888;
+  display: flex;
+  justify-content: space-between;
+}
+
+.task-item-name {
+  margin-right: 30px;
+  margin-left: 25px;
+}
+
+.task-assigned-to {
+  color: #999;
+  font-size: 12px;
+  font-style: italic;
+  margin-right: 25px;
+}
+
+.complete-task {
+  border: 1px solid #999;
+  height: 30px;
+  width: 30px;
+  font-size: 10px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: rgba(0,0,0,.5);
+  -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+}
