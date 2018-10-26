@@ -39,8 +39,8 @@ class ProjectShow extends React.Component {
   toggleTasks(e, project) {
     e.preventDefault()
     e.stopPropagation();
-    this.setState({currentProject: project})
-    // this.props.fetchProject(project._id)
+    // this.setState({currentProject: project})
+    this.props.fetchProject(project._id)
   }
 
   getTeamMemberCount(project) {
