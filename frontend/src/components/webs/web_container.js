@@ -4,14 +4,16 @@ import WebChart from './web_chart';
 import {withRouter} from 'react-router-dom'
 
 const mapStateToProps = (state, ownProps) => {
-    return{
+    return {
         // project: ownProps.project
+        project: state.entities.projects[ownProps.match.params.projectId]
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        openModal: (modal) => dispatch(openModal(modal))
+        openModal: (modal) => dispatch(openModal(modal)),
+        // fetchProject: (projectId) => this.props.fetchProject(project._id)
     };
 };
 

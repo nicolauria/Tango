@@ -5,7 +5,7 @@ import { openModal } from '../../actions/modal_actions';
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state, ownProps) => ({
-  userProjects: state.entities.projects,
+  userProjects: Object.values(state.entities.projects),
   projectUsers: state.entities.users
 });
 
