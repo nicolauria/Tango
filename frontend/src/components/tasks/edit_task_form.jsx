@@ -1,3 +1,4 @@
+import './edit_task.css';
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
@@ -7,7 +8,7 @@ class EditTaskForm extends React.Component {
     const task = this.props.task
 
     this.state = {
-      id: task.id,
+      id: task._id,
       title: task.title,
       time: task.time,
       teamMemberId: task.teamMemberId,
@@ -20,9 +21,13 @@ class EditTaskForm extends React.Component {
 
   handleSubmit(e){
     e.preventDefault();
-    this.props.updateTask(this.state)
+    debugger
+    this.props.updateTask(this.state);
+    this.props.fetchTasks();
     this.props.closeModal();
   }
+
+  
 
 
   updateForm(field){
@@ -43,7 +48,16 @@ class EditTaskForm extends React.Component {
               type="text"
               value={this.state.time}
               onChange={this.updateForm('time')} />
-            <label className="review-label">Notes</label>
+              <br/>
+              <div className="radio-inputs">
+                <label><input type="radio" name="progress" value="false" checked={this.state.completed === false} onChange={this.updateForm("completed")} />In Progress</label>
+                <br/>
+                <label><input type="radio" name="progress" value="true" checked={this.state.completed === true} onChange={this.updateForm("completed")} />Completed</label>
+                <br/>
+                <label className="review-label">Notes</label>
+                
+              </div>
+            <br/>
             <input type="submit" value="Submit" />
           </form>
         </div>
