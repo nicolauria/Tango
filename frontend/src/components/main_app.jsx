@@ -16,11 +16,6 @@ class MainApp extends React.Component{
   )}
 }
 
-// const mapStateToProp = () => {
-//   return({
-
-//   })
-// }
 
 const mapDispatchToProps = (dispatch) => {
   return({

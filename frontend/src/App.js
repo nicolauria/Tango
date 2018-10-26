@@ -19,15 +19,13 @@ class App extends Component {
         <Modal/>
         <NavBarContainer />
 
-        <Switch>
           <AuthRoute exact path="/login" component={LoginFormContainer} />
           <AuthRoute exact path="/signup" component={SignupFormContainer} />
+          <AuthRoute exact path="/" component={SplashPage} />
+          <ProtectedRoute exact path="/" component={MainApp} />
           <ProtectedRoute exact path="/tasks" component={TaskIndexContainer}/>
           <ProtectedRoute exact path="/new_project" component={CreateProjectFormContainer} />
-          <ProtectedRoute exact path="/" component={MainApp} />
-          <Route path="/" component={SplashPage} />
-          <ProtectedRoute path="/" component={MainApp} />
-        </Switch>
+
       </div>
     );
   }
