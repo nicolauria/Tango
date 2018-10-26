@@ -69,7 +69,13 @@ router.get("/", passport.authenticate("jwt", { session: false }), (req,res)=>{
         { _id: { $in: userTasks} }
         ]
       })
-        .populate("tasks")
+        .populate({
+          path: "tasks",
+          populate: {
+            path: "teamMemberId",
+            model: "users"
+          }
+        })
         .sort({ date: -1 })
         .then(projects => res.json(projects))
         .catch(err =>

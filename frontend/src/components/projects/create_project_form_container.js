@@ -5,7 +5,6 @@ import ProjectForm from './project_form';
 import {closeModal} from "../../actions/modal_actions"
 
 const mapStateToProps = ({errors}) => {
-    debugger;
     return({
         errors: errors.projects,
         formType: 'New Project'

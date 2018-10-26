@@ -25,8 +25,8 @@ class App extends Component {
           <ProtectedRoute exact path="/tasks" component={TaskIndexContainer}/>
           <ProtectedRoute exact path="/new_project" component={CreateProjectFormContainer} />
           <ProtectedRoute exact path="/" component={MainApp} />
-          <Route path="/" component={SplashPage} />
           <ProtectedRoute path="/" component={MainApp} />
+          <Route path="/" component={SplashPage} />
         </Switch>
       </div>
     );
