@@ -5,7 +5,9 @@ import jwt_decode from 'jwt-decode';
 import * as APIUtil from './util/session_api_util';
 import * as ProjectApiUtil from './util/projects_api_util';
 import * as ProjectActions from './actions/projects_actions';
+import * as TaskActions from './actions/tasks_actions';
 import * as TaskApiUtil from './util/tasks_api_util';
+
 
 //Compontents
 import configureStore from './store/store';
@@ -32,7 +34,8 @@ window.createProjectApi = ProjectApiUtil.createProject
 window.fetchProjects = ProjectActions.fetchProjects
 window.fetchProject = ProjectActions.fetchProject
 window.createProject = ProjectActions.createProject
-window.fetchTasks = TaskApiUtil.fetchTasks
+window.fetchTasks = TaskActions.fetchTasks
+window.createTask = TaskActions.createTask
 
 
 

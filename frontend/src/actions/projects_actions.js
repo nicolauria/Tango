@@ -28,50 +28,20 @@ const receiveProjectErrors = (errors) => {
 
 export const fetchProjects = () => dispatch => (
     ProjectApiUtil.fetchProjects()
-        .then(
-           response => {
-             // console.log(response.data)
-             dispatch(receiveAllProjects(response.data))},
-           err => dispatch(receiveProjectErrors(err))
-));
+        .then(response => dispatch(receiveAllProjects(response.data)))
+        .catch(errors => dispatch(receiveProjectErrors(errors.response.data)))   
+);
 
-// export const fetchProject = (project) => dispatch => (
-//     ProjectApiUtil.fetchProject(project)
-//         .then(
-//         response => dispatch(receiveProject(response.data)),
-//         err => dispatch(receiveProjectErrors(err))
-// ));
-//
-// export const createProject = (project) => dispatch => (
-//     ProjectApiUtil.createProject(project)
-//         .then(
-//         response => dispatch(receiveProject(response.data)),
-//         err => dispatch(receiveProjectErrors(err))
-// ));
-//         .then(
-//            response => dispatch(receiveAllProjects(response.data))
-//            )
-//         .catch(
-//             err => dispatch(receiveProjectErrors(err.response.data))
-//         )
-// );
-
-export const fetchProject = (project) => dispatch => (
-    ProjectApiUtil.fetchProject(project)
-        .then(
-        response => dispatch(receiveProject(response.data))
-           )
-        .catch(
-            err => dispatch(receiveProjectErrors(err.response.data))
-        )
+export const fetchProject = (projectId) => dispatch => (
+    ProjectApiUtil.fetchProject(projectId)
+        .then(response => dispatch(receiveProject(response.data)))
+        .catch(errors => dispatch(receiveProjectErrors(errors.response.data)))   
 );
 
 export const createProject = (project) => dispatch => (
     ProjectApiUtil.createProject(project)
-        .then(
-        response => dispatch(receiveProject(response.data))
-            )
-        .catch(
-            err => dispatch(receiveProjectErrors(err.response.data))
-        )
+
+        .then(response => dispatch(receiveProject(response.data)))
+        .catch(errors => dispatch(receiveProjectErrors(errors.response.data)))   
 );
+

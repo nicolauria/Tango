@@ -1,0 +1,13 @@
+.task-index-page {
+    height: 100%;
+    width: 80vw;
+}
+
+
+.task-index-item {
+    border: 1px solid black;
+    width: 175px;
+    height: 175px;
+    margin: 20px;
+    padding: 10px;
+}
