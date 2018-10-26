@@ -31,3 +31,9 @@ export const createTask = (task) => dispatch => (
         .then(response => dispatch(receiveTask(response.data)))
         .catch(errors => dispatch(receiveTaskErrors(errors)))
 )
+
+export const updateTask = (task) => dispatch => (
+    TasksApiUtil.updateTask(task)
+        .then(response => dispatch(receiveTask(response.data)))
+        .catch(errors => dispatch(receiveTaskErrors(errors)))
+)
