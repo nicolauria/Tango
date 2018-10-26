@@ -94,7 +94,7 @@ class SessionForm extends React.Component {
 
             <p className="please-do-form">{capitalLogin} to Tango </p>
           {this.renderErrors()}
-          <button onClick={this.loginAsGuest}>DEMO LOGIN</button>
+          <button type="button" onClick={this.loginAsGuest}>DEMO LOGIN</button>
           {this.props.navLink}
           <div className='session-form-manual-login'>
               {

@@ -1,22 +1,24 @@
 import React from 'react'
-import './navbar.css'
+import { Link } from 'react-router-dom';
+import './navbar.scss';
+import ProfileDrop from './profile_drop';
 
 class NavBar extends React.Component {
-
     render() {
-      let navbar = <div></div>;
+      let right = <div className="nav-right">
+        <Link to="/login" >Register</Link>
+        <Link to="register" >Sign in</Link>
+      </div>;
       if (this.props.currentUserName) {
-        navbar = <h1>Hello, {this.props.currentUserName}</h1>;
+        right = <ProfileDrop logout={this.props.logout} />
       } else {
-        navbar = <h1>Tango</h1>;
+        right = <div></div>
       }
 
-      return(
-        <div className="navbar">
-          { navbar }
-          <span className="logout" onClick={this.props.logout}>Log Out</span>
-        </div>
-      )
+      return <div className="navbar">
+          <h1>Tango</h1>
+          {right}
+        </div>;
     }
 }
 

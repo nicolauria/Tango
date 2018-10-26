@@ -1,0 +1,25 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(255, 255, 255);
+  border-radius: 1px;
+  height: 84px;
+
+  h1{
+    font-family: 'Yellowtail', cursive;
+    color: rgb(232,148,10);
+  }
+  .dropDown {
+    height: 84px;
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    img {
+      height: 50px;
+      width: 50px;
+    }
+  }
+}
