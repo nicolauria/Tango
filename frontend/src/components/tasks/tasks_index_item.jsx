@@ -3,17 +3,13 @@ import { Link } from 'react-router-dom';
 import React from 'react';
 
 class TaskIndexItem extends React.Component{
-    constructor(props){
-        super(props);
-        
-    }
+
    
     componentDidMount(){
         this.props.fetchProject(this.props.task.projectId)
     }
 
     render(){
-        const data = this.props.task;
 
         const projectName = this.props.project[this.props.task.projectId]
             if (projectName === undefined) {

@@ -9,11 +9,6 @@ class TaskIndex extends React.Component{
         this.props.fetchTasks();
     }
 
-    componentDidUpdate(){
-        this.props.fetchTasks();
-    }
-
-
     render(){
         const tasks = Object.values(this.props.tasks).map( task => {
             return(

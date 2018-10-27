@@ -1,6 +1,8 @@
 import React from 'react';
 import './project_show.css';
 import { Link } from 'react-router-dom';
+import addItem from './add-item.jpeg';
+
 
 class ProjectShow extends React.Component {
   constructor(props) {
@@ -39,19 +41,15 @@ class ProjectShow extends React.Component {
   toggleTasks(e, project) {
     e.preventDefault()
     e.stopPropagation();
-    // this.setState({currentProject: project})
-    // this.props.fetchProject(project._id)
     this.props.history.push(`/projects/${project._id}`)
   }
 
   getTeamMemberCount(project) {
     let teamMembers = [];
-    // debugger
     project.tasks.forEach(task => {
       if (!teamMembers.includes(task.teamMemberId.name)) {
         teamMembers.push(task.teamMemberId.name)
       }
-      // debugger
     })
     return teamMembers.length
   }
@@ -78,19 +76,20 @@ class ProjectShow extends React.Component {
     }
 
     return(
-      <div className="projects-index">
-        <h1 className="recent-projects">Recent Projcets</h1>
-        <button onClick={() => this.props.openModal('project_create')}>New Project</button>
-            <div className="project-items-container">
-              { projects === null ? null : projects.slice(0, 4) }
+      <div className="projects-index-component">
+        <h1 className="recent-projects">Recent Projects</h1>
+        <div className="projects-container">
+          <button className="project-button" onClick={() => this.props.openModal('project_create')}>
+            <div className="new-project-button">
+              <div>New Project</div>
+              <img className="button-image" src={addItem} />
             </div>
-            <div className="project-details-tasks">
-              <div className="project-details">
-                <h2 className="project-name">Tasks</h2>
-                <button>Add Task</button>
-              </div>
-              {this.displayTasks()}
-            </div>
+          
+          </button>
+          <div className="project-items-container">
+            { projects === null ? null : projects.slice(0, 4) }
+          </div>
+        </div>
       </div>
     )
   }

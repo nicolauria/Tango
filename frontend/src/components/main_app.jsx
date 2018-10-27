@@ -3,6 +3,7 @@ import ProjectShow from './project_index/project_show_container';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { openModal } from '../actions/modal_actions';
+import TaskIndexContainer from './tasks/tasks_index_container';
 
 class MainApp extends React.Component{
 
@@ -15,6 +16,7 @@ class MainApp extends React.Component{
       redirect = (
         <div>
           <ProjectShow/>
+          <TaskIndexContainer />
         </div>
       )
     } else {
