@@ -12,7 +12,6 @@ import WebChartContainer from './components/webs/web_container'
 import Modal from './components/modals/modal';
 import NavBarContainer from './components/navbar/navbar_container';
 
-
 class App extends Component {
   render() {
     return (
@@ -23,14 +22,13 @@ class App extends Component {
         <Switch>
           <AuthRoute exact path="/login" component={LoginFormContainer} />
           <AuthRoute exact path="/signup" component={SignupFormContainer} />
+          <AuthRoute exact path="/splash" component={SplashPage} />
           <ProtectedRoute exact path="/tasks" component={TaskIndexContainer}/>
           <ProtectedRoute exact path="/new_project" component={CreateProjectFormContainer} />
-          <ProtectedRoute exact path="/web" component={WebChartContainer} />
-          <ProtectedRoute exact path="/" component={MainApp} />
-          <ProtectedRoute exact path="/projects/:projectId" component={WebChartContainer}/>
-          <ProtectedRoute path="/" component={MainApp} />
-          <Route path="/" component={SplashPage} />
+          <ProtectedRoute exact path="/projects/:projectId" component={WebChartContainer} />
+          <Route path="/" component={MainApp} />
         </Switch>
+
       </div>
     );
   }
