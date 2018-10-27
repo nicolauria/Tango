@@ -44,7 +44,7 @@ class WebChart extends React.Component{
                       Tasks: {this.props.project.tasks.length}</span><br />
                     <span className="project-team-member-count">
                       Team Members: {this.getTeamMemberCount(this.props.project)}</span><br />
-                    <span className="project-completion-percentage">
+                    <span className="project-completion-pct">
                       35% Complete
                     </span>
                     <h1 className="project-tasks-title">Project Tasks</h1>
