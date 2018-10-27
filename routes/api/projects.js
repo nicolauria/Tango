@@ -89,7 +89,13 @@ router.get("/", passport.authenticate("jwt", { session: false }), (req,res)=>{
 router.get('/:projectId', passport.authenticate('jwt', { session: false }), (req,res) =>{
   let users = [];
   Project.findById(req.params.projectId)
-    .populate("tasks")
+    .populate({
+      path: "tasks",
+      populate: {
+        path: "teamMemberId",
+        model: "users"
+      }
+    })
     .then(project => {
       project.tasks.forEach(task => {
         User.findById(task.teamMemberId)

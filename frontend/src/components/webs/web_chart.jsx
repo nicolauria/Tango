@@ -40,13 +40,15 @@ class WebChart extends React.Component{
                 <Modal />
                 <div className="left-side-bar">
                     <h1 className="project-title">{this.props.project.title}</h1>
-                    <span className="project-task-count">
-                      Tasks: {this.props.project.tasks.length}</span><br />
-                    <span className="project-team-member-count">
-                      Team Members: {this.getTeamMemberCount(this.props.project)}</span><br />
-                    <span className="project-completion-pct">
-                      35% Complete
-                    </span>
+                    <div className="task-details">
+                      <span className="project-task-count">
+                        Tasks: {this.props.project.tasks.length}</span><br />
+                      <span className="project-team-member-count">
+                        Team Members: {this.getTeamMemberCount(this.props.project)}</span><br />
+                      <span className="project-completion-pct">
+                        35% Complete
+                      </span>
+                    </div>
                     <h1 className="project-tasks-title">Project Tasks</h1>
                     <div className="project-tasks">{this.fetchProjectTasks()}</div>
                 </div>
