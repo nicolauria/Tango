@@ -8,7 +8,7 @@ class EditTaskForm extends React.Component {
     const task = this.props.task
 
     this.state = {
-      id: task._id,
+      _id: task._id,
       title: task.title,
       time: task.time,
       teamMemberId: task.teamMemberId,
@@ -28,7 +28,6 @@ class EditTaskForm extends React.Component {
   }
 
   updateForm(field){
-    // console.log(e.currentTarget)
     return (
       (e) => {
         this.setState({[field]: e.target.value})
@@ -39,7 +38,6 @@ class EditTaskForm extends React.Component {
   updateBoolean(field){
     return (
       (e) => {
-
         this.setState({[field]: (e.target.value === "true")})
       }
     );

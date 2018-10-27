@@ -16,16 +16,18 @@ router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
     title: req.body.title,
     description: req.body.description,
     managerId: req.user.id,
-    idealProjectLength: req.body.idealProjectLength
+    idealProjectLength: req.body.idealProjectLength,
+    tasks: []
   })
 
   newProject.save().then(project => {
     res.json({
-      id: project.id,
+      _id: project.id,
       title: project.title,
       description: project.description,
       managerId: project.managerId,
-      idealProjectLength: project.idealProjectLength
+      idealProjectLength: project.idealProjectLength,
+      tasks: []
     })
   })
 })

@@ -9,5 +9,5 @@ export const createTask = (task) => {
 };
 
 export const updateTask = (task) => {
-    return axios.put(`/api/tasks/${task.id}`, task)
+    return axios.put(`/api/tasks/${task._id}`, task)
 }
