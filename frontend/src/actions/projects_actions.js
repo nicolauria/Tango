@@ -45,6 +45,12 @@ export const fetchProject = (projectId) => dispatch => (
 export const createProject = (project) => dispatch => (
     ProjectApiUtil.createProject(project)
 
-        .then(response => dispatch(receiveProject(response.data)))
-        .catch(errors => dispatch(receiveProjectErrors(errors.response.data)))
+        .then(response => {
+            debugger
+            return dispatch(receiveProject(response.data))
+        })
+        .catch(errors => { 
+            debugger
+            return dispatch(receiveProjectErrors(errors))
+        })
 );

@@ -23,14 +23,14 @@ class App extends Component {
         <Switch>
           <AuthRoute exact path="/login" component={LoginFormContainer} />
           <AuthRoute exact path="/signup" component={SignupFormContainer} />
+          <AuthRoute exact path="/splash" component={SplashPage} />
           <ProtectedRoute exact path="/tasks" component={TaskIndexContainer}/>
           <ProtectedRoute exact path="/new_project" component={CreateProjectFormContainer} />
-          <ProtectedRoute exact path="/web" component={WebChartContainer} />
-          <ProtectedRoute exact path="/" component={MainApp} />
-          <Route exact path="/canvas" component={WebCanvasContainer} />
-          <Route path="/" component={SplashPage} />
-          <ProtectedRoute path="/" component={MainApp} />
+          <ProtectedRoute exact path="/projects/:projectId" component={WebChartContainer} />
+          <ProtectedRoute exact path="/canvas" />
+          <Route path="/" component={MainApp} />
         </Switch>
+
       </div>
     );
   }

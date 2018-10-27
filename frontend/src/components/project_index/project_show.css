@@ -18,7 +18,7 @@
   margin-top: 30px;
 }
 
-.projects-index h1 {
+.projects-index-component h1 {
   margin-top: 50px;
 }
 
@@ -26,6 +26,26 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+.projects-container {
+  display: flex;
+}
+.project-button {
+  background: white;
+}
+
+.new-project-button {
+  height: 175px;
+  width: 175px;
+  font-size: 18px;
+  font-weight: bold;
+  background: white;
+}
+
+.button-image {
+  height: 70%;
+  width: 70%;
 }
 
 .project-item {

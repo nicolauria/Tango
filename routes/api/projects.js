@@ -16,16 +16,18 @@ router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
     title: req.body.title,
     description: req.body.description,
     managerId: req.user.id,
-    idealProjectLength: req.body.idealProjectLength
+    idealProjectLength: req.body.idealProjectLength,
+    tasks: []
   })
 
   newProject.save().then(project => {
     res.json({
-      id: project.id,
+      _id: project.id,
       title: project.title,
       description: project.description,
       managerId: project.managerId,
-      idealProjectLength: project.idealProjectLength
+      idealProjectLength: project.idealProjectLength,
+      tasks: []
     })
   })
 })
@@ -69,7 +71,13 @@ router.get("/", passport.authenticate("jwt", { session: false }), (req,res)=>{
         { _id: { $in: userTasks} }
         ]
       })
-        .populate("tasks")
+        .populate({
+          path: "tasks",
+          populate: {
+            path: "teamMemberId",
+            model: "users"
+          }
+        })
         .sort({ date: -1 })
         .then(projects => res.json(projects))
         .catch(err =>
@@ -81,7 +89,13 @@ router.get("/", passport.authenticate("jwt", { session: false }), (req,res)=>{
 router.get('/:projectId', passport.authenticate('jwt', { session: false }), (req,res) =>{
   let users = [];
   Project.findById(req.params.projectId)
-    .populate("tasks")
+    .populate({
+      path: "tasks",
+      populate: {
+        path: "teamMemberId",
+        model: "users"
+      }
+    })
     .then(project => {
       project.tasks.forEach(task => {
         User.findById(task.teamMemberId)

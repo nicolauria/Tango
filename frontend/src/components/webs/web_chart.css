@@ -16,6 +16,42 @@
 .left-side-bar{
     width: 30%;
     height: 100%;
-    border: 1px solid red;  
+    border: 1px solid red;
     float: left;
+}
+
+.project-tasks {
+
+}
+
+.project-task {
+  padding: 20px 15px;
+  border-bottom: 1px solid #999;
+}
+
+.task-title {
+  margin-left: 10px;
+  margin-right: 47px;
+}
+
+.task-owner {
+
+}
+
+.task-assigned-to {
+  margin-right: 20px;
+}
+
+.project-tasks-title,
+.project-title {
+  text-align: center;
+}
+
+.task-details {
+  text-align: center;
+  font-size: 18px;
+}
+
+.project-team-member-count {
+  margin-bottom: 10px;
 }

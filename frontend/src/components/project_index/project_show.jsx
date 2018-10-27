@@ -1,6 +1,8 @@
 import React from 'react';
 import './project_show.css';
 import { Link } from 'react-router-dom';
+import addItem from './add-item.jpeg';
+
 
 class ProjectShow extends React.Component {
   constructor(props) {
@@ -23,7 +25,7 @@ class ProjectShow extends React.Component {
           <div>
             <span className="task-item-name">{task.title}</span>
             <span className="task-assigned-to">assigned to:</span>
-            <span className="task-owner-name">William</span>
+            <span className="task-owner-name">{task.teamMemberId.name}</span>
           </div>
           <div>
             <span className="complete-task">mark complete</span>
@@ -39,8 +41,17 @@ class ProjectShow extends React.Component {
   toggleTasks(e, project) {
     e.preventDefault()
     e.stopPropagation();
-    this.setState({currentProject: project})
-    // this.props.fetchProject(project._id)
+    this.props.history.push(`/projects/${project._id}`)
+  }
+
+  getTeamMemberCount(project) {
+    let teamMembers = [];
+    project.tasks.forEach(task => {
+      if (!teamMembers.includes(task.teamMemberId.name)) {
+        teamMembers.push(task.teamMemberId.name)
+      }
+    })
+    return teamMembers.length
   }
 
   render() {
@@ -53,7 +64,7 @@ class ProjectShow extends React.Component {
             <span className="project-task-count">
               Tasks: {project.tasks.length}</span><br />
               <span className="project-team-member-count">
-                Team Members: 0</span><br />
+                Team Members: {this.getTeamMemberCount(project)}</span><br />
               <span className="project-completion-percentage">
                 35% Complete
               </span>
@@ -65,19 +76,20 @@ class ProjectShow extends React.Component {
     }
 
     return(
-      <div className="projects-index">
-        <h1 className="recent-projects">Recent Projcets</h1>
-        <button onClick={() => this.props.openModal('project_create')}>New Project</button>
-            <div className="project-items-container">
-              { projects === null ? null : projects.slice(0, 4) }
+      <div className="projects-index-component">
+        <h1 className="recent-projects">Recent Projects</h1>
+        <div className="projects-container">
+          <button className="project-button" onClick={() => this.props.openModal('project_create')}>
+            <div className="new-project-button">
+              <div>New Project</div>
+              <img className="button-image" src={addItem} />
             </div>
-            <div className="project-details-tasks">
-              <div className="project-details">
-                <h2 className="project-name">Tasks</h2>
-                <button>Add Task</button>
-              </div>
-              {this.displayTasks()}
-            </div>
+          
+          </button>
+          <div className="project-items-container">
+            { projects === null ? null : projects.slice(0, 4) }
+          </div>
+        </div>
       </div>
     )
   }
