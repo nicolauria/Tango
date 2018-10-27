@@ -28,14 +28,13 @@ class ProjectForm extends React.Component{
     render() {
         return(
             <div className="project-form-background">
-                <h1>ProjectForm</h1>
                 <form onSubmit={this.handleSubmit}>
                     <h1>{this.props.formType}</h1>
                     {this.props.errors}
-                    <input onChange={this.handleChange('title')} placeholder="Title" value={this.state.title}></input> 
-                    <input onChange={this.handleChange('description')} placeholder="Description" value={this.state.description}></input> 
-                    <input onChange={this.handleChange('idealProjectLength')} placeholder="idealProjectLength" value={this.state.idealProjectLength}></input> 
-                    <input onClick={this.handleSubmit} type="submit" value="Create Project"/>
+                    <input onChange={this.handleChange('title')} placeholder="Title" value={this.state.title}></input>
+                    <input onChange={this.handleChange('description')} placeholder="Description" value={this.state.description}></input>
+                    <input onChange={this.handleChange('idealProjectLength')} placeholder="idealProjectLength" value={this.state.idealProjectLength}></input>
+                    <input className="project-form-submit" onClick={this.handleSubmit} type="submit" value="Create Project"/>
                 </form>
             </div>
         )

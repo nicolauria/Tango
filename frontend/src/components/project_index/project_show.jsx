@@ -23,7 +23,7 @@ class ProjectShow extends React.Component {
           <div>
             <span className="task-item-name">{task.title}</span>
             <span className="task-assigned-to">assigned to:</span>
-            <span className="task-owner-name">William</span>
+            <span className="task-owner-name">{task.teamMemberId.name}</span>
           </div>
           <div>
             <span className="complete-task">mark complete</span>
@@ -39,8 +39,21 @@ class ProjectShow extends React.Component {
   toggleTasks(e, project) {
     e.preventDefault()
     e.stopPropagation();
-    this.setState({currentProject: project})
+    // this.setState({currentProject: project})
     // this.props.fetchProject(project._id)
+    this.props.history.push(`/projects/${project._id}`)
+  }
+
+  getTeamMemberCount(project) {
+    let teamMembers = [];
+    // debugger
+    project.tasks.forEach(task => {
+      if (!teamMembers.includes(task.teamMemberId.name)) {
+        teamMembers.push(task.teamMemberId.name)
+      }
+      // debugger
+    })
+    return teamMembers.length
   }
 
   render() {
@@ -53,7 +66,7 @@ class ProjectShow extends React.Component {
             <span className="project-task-count">
               Tasks: {project.tasks.length}</span><br />
               <span className="project-team-member-count">
-                Team Members: 0</span><br />
+                Team Members: {this.getTeamMemberCount(project)}</span><br />
               <span className="project-completion-percentage">
                 35% Complete
               </span>
