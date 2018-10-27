@@ -5,8 +5,8 @@ import {openModal} from '../../actions/modal_actions'
 
 const mapStateToProps = (state, ownProps) => {
     return({
-        project: ownProps.project,
-        tasks: ownProps.project.tasks
+        project: state.entities.projects[ownProps.match.params.projectId],
+        // tasks: ownProps.project.tasks
     })
 }
 

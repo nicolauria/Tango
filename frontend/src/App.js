@@ -27,9 +27,9 @@ class App extends Component {
           <ProtectedRoute exact path="/new_project" component={CreateProjectFormContainer} />
           <ProtectedRoute exact path="/web" component={WebChartContainer} />
           <ProtectedRoute exact path="/" component={MainApp} />
+          <Route exact path="/canvas" component={WebCanvasContainer} />
           <Route path="/" component={SplashPage} />
           <ProtectedRoute path="/" component={MainApp} />
-          <Route exact path="/canvas" component={WebCanvasContainer} />
         </Switch>
       </div>
     );

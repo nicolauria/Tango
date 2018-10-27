@@ -21,7 +21,7 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state)
-    this.props.processForm(user)
+    this.props.processForm(user);
   }
 
   componentDidMount(){
@@ -103,7 +103,6 @@ class SessionForm extends React.Component {
             <p className="please-do-form">{capitalLogin} to Tango </p>
           {this.renderErrors()}
           {this.renderGuestLoginButton()}
-          <button type="button" onClick={this.loginAsGuest}>DEMO LOGIN</button>
           {this.props.navLink}
           <div className='session-form-manual-login'>
               {

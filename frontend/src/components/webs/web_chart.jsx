@@ -20,7 +20,7 @@ class WebChart extends React.Component{
                 <div className="left-side-bar">
                     <h1>Left Component Here</h1>
                 </div>
-                <canvas className="web-chart" id="canvas_field" ref={el => this.myCanvas = el} width="632" height="1000"></canvas>
+                <canvas className="web-chart" id="canvas_field" ref={el => this.myCanvas = el} width="771" height="1000"></canvas>
                 
 
             </div>
