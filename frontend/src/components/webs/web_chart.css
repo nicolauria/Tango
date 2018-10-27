@@ -46,3 +46,12 @@
 .project-title {
   text-align: center;
 }
+
+.task-details {
+  text-align: center;
+  font-size: 18px;
+}
+
+.project-team-member-count {
+  margin-bottom: 10px;
+}
