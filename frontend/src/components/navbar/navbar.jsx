@@ -20,7 +20,7 @@ class NavBar extends React.Component {
       }
 
       return <div className="navbar">
-          <Link to="/" className="text-logo">
+          <Link to={ this.props.currentUserName ? "/" : "/splash"} className="text-logo">
             <img alt="Tango" src={textLogo} />
           </Link>
           {right}
