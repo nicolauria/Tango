@@ -15,6 +15,7 @@ class ProjectShow extends React.Component {
 
   componentDidMount() {
     this.props.fetchProjects();
+    this.props.fetchUsers();
   }
 
   displayTasks() {
