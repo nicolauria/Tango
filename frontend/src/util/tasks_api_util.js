@@ -1,8 +1,13 @@
 import axios from "axios";
 
- export const fetchTasks = () => {
+export const fetchTasks = () => {
   return axios.get("/api/tasks/");
 };
+
+export const fetchProjectTasks = projectId => {
+  // debugger
+  return axios.get(`/api/tasks/${projectId}`)
+}
 
 export const createTask = (task) => {
     return axios.post("/api/tasks/", task)

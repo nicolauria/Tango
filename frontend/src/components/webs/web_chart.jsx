@@ -13,6 +13,7 @@ class WebChart extends React.Component {
         let a = this.myCanvas
         // initWeb(this.props.project)
         initWeb();
+        this.props.fetchProjectTasks(this.props.match.params.projectId)
     }
 
     handleDeleteClick(e, task) {
@@ -22,7 +23,8 @@ class WebChart extends React.Component {
     }
 
     fetchProjectTasks() {
-      const tasks = this.props.project.tasks.map(task => {
+      if (this.props.tasks.length === 0) return null;
+      const tasks = this.props.tasks.map(task => {
         return <div className="project-task">
           <span className="remove-task" onClick={(e) => this.handleDeleteClick(e, task)}>x</span>
           <span className="task-title">{task.title}</span>

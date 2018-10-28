@@ -73,6 +73,14 @@ router.put('/:taskId', passport.authenticate("jwt", { session: false}), (req, re
       );
   });
 
+router.get('/:projectId', passport.authenticate('jwt', { session: false }), (req, res) => {
+  Project.find({_id: req.params.projectId})
+    .populate({path: "tasks"})
+    .then(project => {
+      return res.json(project)
+    })
+})
+
 router.delete("/:taskId", passport.authenticate("jwt", { session: false }), (req, res) => {
     // console.log(req.params)
     console.log('delete request made')
