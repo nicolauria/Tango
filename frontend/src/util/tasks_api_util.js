@@ -17,6 +17,5 @@ export const updateTask = (task) => {
 }
 
 export const removeTask = task => {
-  debugger
   return axios.delete(`/api/tasks/${task._id}`)
 }
