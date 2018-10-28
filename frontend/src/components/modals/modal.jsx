@@ -5,6 +5,7 @@ import LoginFormContainer from '../session_form/login_form_container';
 import {Link} from 'react-router-dom';
 import CreateProjectFormContainer from '../projects/create_project_form_container';
 import EditTaskContainer from '../tasks/edit_task_container';
+import CreateTaskContainer from '../webs/create_task_container';
 import './modal.css';
 
 const Modal = ({modal, closeModal}) => {
@@ -21,6 +22,9 @@ const Modal = ({modal, closeModal}) => {
       break;
     case 'edit_task':
       component = <EditTaskContainer />
+      break;
+    case 'create_task':
+      component = <CreateTaskContainer />
       break;
     default:
       return null;

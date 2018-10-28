@@ -1,6 +1,6 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom';
-
+import './session_form.scss';
 
 
 class SessionForm extends React.Component {
