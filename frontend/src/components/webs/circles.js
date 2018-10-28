@@ -17,7 +17,6 @@ function Circle(x, y, r, fill, title) {
 
 // draws the circle
 Circle.prototype.drawCircle = function(ctx) {
-    debugger
     ctx.beginPath()
     ctx.fillStyle = this.fill;
     ctx.arc(this.x, this.y, this.r, this.sAngle, this.eAngle, false)
