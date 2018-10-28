@@ -56,7 +56,7 @@
       list-style: none;
       box-shadow: 0 5px 10px rgba(0,0,0,0.15);
       width: 200px;
-      height: 160px;
+      height: 170px;
       right: 0px;
       padding: 8px 5px 13px 19px;
       display: flex;
@@ -76,7 +76,7 @@
         padding: 5px 10px;
         border-bottom: 1px solid black;
         line-height: 34px;
-        width: 200px;
+        width: 204px;
       }
 
       .greet {
@@ -88,14 +88,27 @@
 
       .links {
         color: rgb(44, 109, 0);
+        line-height: 37px;
         border-bottom: 0;
         cursor: pointer;
         width: 204px;;
-        border-radius: 3px;
 
         &:hover {
           background-color: rgba(252, 185, 42, 0.1);
         }
+      }
+      a.links{
+        padding: 0 0 0 18px;
+        line-height: 47px;
+        right: 10px;
+        bottom: 3px;
+        z-index: 10;
+        margin-left: 6px;
+        position: relative;
+      }
+
+      li.links{
+        border-top: 1px solid black;
       }
     }
   }
