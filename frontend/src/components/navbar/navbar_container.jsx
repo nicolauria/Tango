@@ -1,5 +1,5 @@
-import {connect} from 'react-redux'
-
+import {connect} from 'react-redux';
+import {withRouter} from 'react-router-dom';
 import { logoutUser } from '../../util/session_api_util';
 import NavBar from './navbar';
 
