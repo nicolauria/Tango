@@ -5,6 +5,7 @@ export const RECEIVE_TASK = "RECEIVE_TASK"
 export const RECEIVE_TASK_ERRORS = "RECEIVE_TASK_ERRORS";
 export const REMOVE_TASK = "REMOVE_TASK";
 export const RECEIVE_PROJECT_TASKS = 'RECEIVE_PROJECT_TASKS';
+export const REMOVE_TASKS_STATE = 'REMOVE_TASKS_STATE';
 
 const receiveAllTasks = tasks => ({
     type: RECEIVE_ALL_TASKS,
@@ -25,6 +26,10 @@ const removeTaskState = taskId => ({
   type: REMOVE_TASK,
   taskId
 })
+
+export const removeTasksState = () => ({
+  type: REMOVE_TASKS_STATE
+});
 
 const receiveProjectTasks = tasks => ({
   type: RECEIVE_PROJECT_TASKS,
