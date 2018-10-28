@@ -15,16 +15,26 @@ class ProfileDrop extends React.Component {
     }
 
     render(){
-        let { logout, currentUserName } = this.props;
+        let { logout, currentUserName, history } = this.props;
         const { menuDropped } = this.state;
         return <div onClick={this.toggleDrop} className={menuDropped ? "drop-down dropped" : "drop-down"}>
             <img alt="Profile" src={dropDownImg} />
 
             {menuDropped && <ul className="drop-menu">
                 <li className="greet">Hello, {currentUserName}</li>
-                <li className="links"><Link to="/main">Projects</Link></li>
-                <li className="links"><Link to="/tasks">My Tasks</Link></li>
-                <li className="links" onClick={logout}>Logout</li>
+
+                <Link className="links" to="/main">
+                  Projects
+                </Link>
+
+                
+                  <Link className="links" to="/tasks">
+                    My Tasks
+                  </Link>
+                
+                <li className="links" onClick={logout}>
+                  Logout
+                </li>
               </ul>}
           </div>;
     }

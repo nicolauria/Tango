@@ -86,5 +86,9 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (req, res
   })
 })
 
+router.get('/', passport.authenticate('jwt', {session: false}), (req, res) => {
+  User.find().then( users => res.json({users: users}))
+})
+
 
 module.exports = router;

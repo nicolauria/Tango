@@ -2,7 +2,8 @@ import {connect} from 'react-redux';
 import {openModal} from '../../actions/modal_actions';
 import WebChart from './web_chart';
 import {withRouter} from 'react-router-dom'
-import { removeTask, fetchProjectTasks, removeTasksState } from '../../actions/tasks_actions'
+import { removeTask, fetchProjectTasks, removeTasksState, fetchTasks } from '../../actions/tasks_actions'
+
 
 const mapStateToProps = (state, ownProps) => {
     return {
@@ -13,7 +14,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        openModal: (modal) => dispatch(openModal(modal)),
+        openModal: (modal, data) => dispatch(openModal(modal, data)),
         removeTask: task => dispatch(removeTask(task)),
         fetchProjectTasks: projectId => dispatch(fetchProjectTasks(projectId)),
         removeTasks: () => dispatch(removeTasksState())

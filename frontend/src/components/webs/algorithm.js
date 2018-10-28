@@ -1,7 +1,7 @@
 let longest_path = (task, best_path = [], best_length = 0, curr_path = [], curr_length = 0) => {
 
     curr_length += task.time
-    curr_path += [task.id]
+    curr_path += [task.title]
 
     if (task.dependencies === undefined) {
         if (curr_length > best_length) {
@@ -13,22 +13,19 @@ let longest_path = (task, best_path = [], best_length = 0, curr_path = [], curr_
             }
         }
     }
-   
     let res = {
         best_path, 
         best_length
     }
-    
+
     task.dependencies.forEach( task1 => {
         newRes = longest_path(task1, best_path, best_length, curr_path, curr_length)
- 
-
         if (newRes.best_length > res.best_length) {
             res = newRes
         }
-
     })
-
-
+    
     return res 
 }
+
+export default longest_path;
