@@ -5,7 +5,6 @@ export const fetchTasks = () => {
 };
 
 export const fetchProjectTasks = projectId => {
-  // debugger
   return axios.get(`/api/tasks/${projectId}`)
 }
 

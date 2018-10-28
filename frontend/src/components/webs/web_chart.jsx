@@ -25,6 +25,7 @@ class WebChart extends React.Component {
     fetchProjectTasks() {
       if (this.props.tasks.length === 0) return null;
       const tasks = this.props.tasks.map(task => {
+        debugger
         return <div className="project-task">
           <span className="remove-task" onClick={(e) => this.handleDeleteClick(e, task)}>x</span>
           <span className="task-title">{task.title}</span>

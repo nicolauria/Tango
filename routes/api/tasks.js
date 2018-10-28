@@ -35,7 +35,6 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
 })
 
 router.get("/", passport.authenticate("jwt", { session: false }), (req, res) => {
-  debugger
     Task.find({ teamMemberId: req.user.id })
         .sort({ date: -1 })
         .then(tasks => res.json(tasks))
@@ -75,7 +74,13 @@ router.put('/:taskId', passport.authenticate("jwt", { session: false}), (req, re
 
 router.get('/:projectId', passport.authenticate('jwt', { session: false }), (req, res) => {
   Project.find({_id: req.params.projectId})
-    .populate({path: "tasks"})
+    .populate({
+      path: "tasks",
+      populate: {
+        path: "teamMemberId",
+        model: "users"
+      }
+    })
     .then(project => {
       return res.json(project)
     })
