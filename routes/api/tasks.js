@@ -6,7 +6,7 @@ const validateTaskInput = require('../../validations/task_validations');
 
 router.post('/', passport.authenticate('jwt', { session: false }), (req, res) => {
     const { errors, isValid } = validateTaskInput(req.body);
-    
+
     if (!isValid) {
         return res.status(400).json(errors);
     }
@@ -31,16 +31,17 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
         })
     })
 
-    
+
 })
 
 router.get("/", passport.authenticate("jwt", { session: false }), (req, res) => {
+  debugger
     Task.find({ teamMemberId: req.user.id })
         .sort({ date: -1 })
         .then(tasks => res.json(tasks))
         .catch(err =>
             res.status(404).json({ noprojectsfound: "No projects found" })
-        )    
+        )
 });
 
 router.put('/:taskId', passport.authenticate("jwt", { session: false}), (req, res)=> {
@@ -48,7 +49,7 @@ router.put('/:taskId', passport.authenticate("jwt", { session: false}), (req, re
     if (!isValid) {
       return res.status(400).json(errors);
     }
-  
+
     Task.findByIdAndUpdate(req.params.taskId, {
       title: req.body.title,
       time: req.body.time,
@@ -71,5 +72,16 @@ router.put('/:taskId', passport.authenticate("jwt", { session: false}), (req, re
         res.status(404).json({ notasksfound: "No tasks found", err })
       );
   });
+
+router.delete("/:taskId", passport.authenticate("jwt", { session: false }), (req, res) => {
+    // console.log(req.params)
+    console.log('delete request made')
+    // debugger
+    // Task.deleteOne({_id: req.params.taskId})
+    //   .then(response => res.json(req.params.taskId))
+    Task.findByIdAndRemove(req.params.taskId, (err, todo) => {
+      return res.json(req.params.taskId)
+    })
+});
 
 module.exports = router;

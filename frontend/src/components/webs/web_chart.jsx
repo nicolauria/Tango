@@ -3,7 +3,11 @@ import React from 'react';
 import Modal from '../modals/modal';
 import './web_chart.css'
 
-class WebChart extends React.Component{
+class WebChart extends React.Component {
+    constructor(props) {
+      super(props)
+      this.handleDeleteClick = this.handleDeleteClick.bind(this);
+    }
 
     componentDidMount(){
         let a = this.myCanvas
@@ -11,9 +15,16 @@ class WebChart extends React.Component{
         initWeb();
     }
 
+    handleDeleteClick(e, task) {
+      e.preventDefault();
+      e.stopPropagation();
+      this.props.removeTask(task)
+    }
+
     fetchProjectTasks() {
       const tasks = this.props.project.tasks.map(task => {
         return <div className="project-task">
+          <span className="remove-task" onClick={(e) => this.handleDeleteClick(e, task)}>x</span>
           <span className="task-title">{task.title}</span>
           <span className="task-assigned-to">assigned to:</span>
           <span className="task-owner">{task.teamMemberId.name}</span>
