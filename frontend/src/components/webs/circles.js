@@ -4,9 +4,9 @@
 
 //the circles default size radius center and sAngle is start always 0 the 2*math.PI is 
 // end angle which is 360 degrees but in radius
-function Circle(x, y, r, fill, title) {
-    
-    this.title = 'WOW';
+export function Circle(x, y, r, fill, taskId, preReqs) {
+    this.preReqs = preReqs
+    this.taskId = taskId;
     this.x = x || 0;
     this.y = y || 0;
     this.r = r || 15;
@@ -28,9 +28,13 @@ Circle.prototype.drawCircle = function(ctx) {
 
 // is the mouse inside the circle gonna use this to drag the circle around
 Circle.prototype.contains = function(mx, my) {
-    
+    console.log(`t/f: ${Math.sqrt((mx - this.x)*(mx - this.x) + (my - this.y)*(my - this.y)) < this.r}`)
+    console.log(` thisx: ${this.x}`)
+    console.log(`thisy: ${this.y}`)
+    console.log(`mouse x,y ${mx, my}`)
     return (Math.sqrt((mx - this.x)*(mx - this.x) + (my - this.y)*(my - this.y)) < this.r);
 }
+
 
 function CanvasState(canvas) {
 
@@ -203,8 +207,8 @@ export function initWeb(project) {
 
     // project.tasks.map( task => {
     //     s.addShape(new Circle(
-    //         Math.floor(Math.random() * 100),
-    //         Math.floor(Math.random() * 100),
+    //         Math.floor(Math.random() * 700),
+    //         Math.floor(Math.random() * 1000),
     //         25,
     //         null,
     //         task.title

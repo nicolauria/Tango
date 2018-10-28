@@ -26,6 +26,7 @@ class App extends Component {
           <AuthRoute exact path="/splash" component={SplashPage} />
           <ProtectedRoute exact path="/tasks" component={TaskIndexContainer}/>
           <ProtectedRoute exact path="/new_project" component={CreateProjectFormContainer} />
+          <ProtectedRoute exact path="/projects/:projectId" component={WebCanvasContainer} />
           <ProtectedRoute exact path="/projects/:projectId" component={WebChartContainer} />
           <ProtectedRoute exact path="/canvas" />
           <Route path="/" component={MainApp} />

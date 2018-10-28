@@ -52,12 +52,8 @@ class WebChart extends React.Component{
                     <h1 className="project-tasks-title">Project Tasks</h1>
                     <div className="project-tasks">{this.fetchProjectTasks()}</div>
                 </div>
-<<<<<<< HEAD
                 <canvas className="web-chart" id="canvas_field" ref={el => this.myCanvas = el} width="771" height="1000"></canvas>
                 
-=======
-                <canvas className="web-chart" id="canvas_field" ref={el => this.myCanvas = el} width="1000" height="1000"></canvas>
->>>>>>> 68012c1ed24cf1a3f029c595592cd1d2463be7c7
 
             </div>
         )
