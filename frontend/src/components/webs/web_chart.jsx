@@ -1,14 +1,15 @@
 import {initWeb, CanvasState} from './circles';
 import React from 'react';
 import Modal from '../modals/modal';
+import WebCanvasContainer from './web_canvas_container';
 import './web_chart.css'
 
 class WebChart extends React.Component{
 
     componentDidMount(){
-        let a = this.myCanvas
+        // let a = this.myCanvas
         // initWeb(this.props.project)
-        initWeb();
+        // initWeb();
     }
 
     fetchProjectTasks() {
@@ -35,6 +36,7 @@ class WebChart extends React.Component{
     }
 
     render(){
+      debugger
         return(
             <div className="project-show-page">
                 <Modal />
@@ -52,8 +54,7 @@ class WebChart extends React.Component{
                     <h1 className="project-tasks-title">Project Tasks</h1>
                     <div className="project-tasks">{this.fetchProjectTasks()}</div>
                 </div>
-                <canvas className="web-chart" id="canvas_field" ref={el => this.myCanvas = el} width="771" height="1000"></canvas>
-                
+                <WebCanvasContainer />                
 
             </div>
         )

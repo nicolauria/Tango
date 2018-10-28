@@ -7,7 +7,7 @@ import {fetchProject} from '../../actions/projects_actions'
 const mapStateToProps = (state, ownProps) => {
     // debugger
     return({
-        projectId: ownProps.match.params.projectId,
+        // projectId: ownProps.match.params.projectId,
         project: state.entities.projects[ownProps.match.params.projectId],
         // tasks: ownProps.project.tasks
     })
