@@ -13,6 +13,7 @@ class WebChart extends React.Component {
         let a = this.myCanvas
         // initWeb(this.props.project)
         initWeb();
+        this.props.removeTasks();
         this.props.fetchProjectTasks(this.props.match.params.projectId)
     }
 
