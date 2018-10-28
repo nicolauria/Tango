@@ -5,10 +5,10 @@ import {fetchProject} from '../../actions/projects_actions'
 // we might want a different type of modal to open up when we do this
 
 const mapStateToProps = (state, ownProps) => {
-    // debugger
+    
     return({
         // projectId: ownProps.match.params.projectId,
-        project: state.entities.projects[ownProps.match.params.projectId],
+        project: ownProps.project,
         // tasks: ownProps.project.tasks
     })
 }

@@ -13,10 +13,7 @@ class WebChart extends React.Component {
     componentDidMount(){
         // let a = this.myCanvas
         // initWeb(this.props.project)
-<<<<<<< HEAD
         // initWeb();
-=======
-        initWeb();
         this.props.removeTasks();
         this.props.fetchProjectTasks(this.props.match.params.projectId)
     }
@@ -25,13 +22,12 @@ class WebChart extends React.Component {
       e.preventDefault();
       e.stopPropagation();
       this.props.removeTask(task)
->>>>>>> 942bb06ea14edb4b6f414fb3ea7b6346bbfa1197
     }
 
     fetchProjectTasks() {
       if (this.props.tasks.length === 0) return null;
       const tasks = this.props.tasks.map(task => {
-        debugger
+        
         return <div className="project-task">
           <span className="remove-task" onClick={(e) => this.handleDeleteClick(e, task)}>x</span>
           <span className="task-title">{task.title}</span>
@@ -82,9 +78,6 @@ class WebChart extends React.Component {
   }
 
     render(){
-<<<<<<< HEAD
-      debugger
-=======
 
         // const algorithm = () => {
         //   if ((this.props.project != undefined) && (this.props.project.tasks != undefined)) {
@@ -100,7 +93,6 @@ class WebChart extends React.Component {
         //   }
         // }
 
->>>>>>> 942bb06ea14edb4b6f414fb3ea7b6346bbfa1197
         return(
             <div className="project-show-page">
                 <Modal />
@@ -126,12 +118,8 @@ class WebChart extends React.Component {
                     <button className='create-task-button' onClick={() => this.props.openModal('create_task', [this.props.project])}>Add Task</button>
                     <div className="project-tasks">{this.fetchProjectTasks()}</div>
                 </div>
-<<<<<<< HEAD
-                <WebCanvasContainer />                
+                <WebCanvasContainer project={this.props.project} />                
 
-=======
-                <canvas className="web-chart" id="canvas_field" ref={el => this.myCanvas = el} width="1000" height="1000"></canvas>
->>>>>>> 942bb06ea14edb4b6f414fb3ea7b6346bbfa1197
             </div>
         )
     }

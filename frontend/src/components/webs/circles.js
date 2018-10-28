@@ -17,10 +17,7 @@ export function Circle(x, y, r, fill, taskId, preReqs) {
 
 // draws the circle
 Circle.prototype.drawCircle = function(ctx) {
-<<<<<<< HEAD
     
-=======
->>>>>>> 942bb06ea14edb4b6f414fb3ea7b6346bbfa1197
     ctx.beginPath()
     ctx.fillStyle = this.fill;
     ctx.arc(this.x, this.y, this.r, this.sAngle, this.eAngle, false)
@@ -123,7 +120,6 @@ function CanvasState(canvas) {
     }, true);
 
     canvas.addEventListener('dblclick', function(e){
-        // debugger
         let mouse = myState.getMouse(e);
         myState.addShape(new Circle(mouse.x, mouse.y, 25, 0, 2 * Math.PI, 'rgba(151, 216, 107, 0.3)'))
     })
