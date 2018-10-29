@@ -22,6 +22,11 @@ class WebCanvas extends React.Component{
         this.handleMouseMove = this.handleMouseMove.bind(this)
         this.handleMouseUp = this.handleMouseUp.bind(this)
         this.handleClick = this.handleClick.bind(this)
+
+        this.position = {};
+        this.interval();
+
+        // this.handleDoubleClick = this.handleDoubleClick.bind(this)
         //     width: 
         //     height: 
 
@@ -33,14 +38,6 @@ class WebCanvas extends React.Component{
         this.props.fetchProject(this.props.projectId);
     }
 
-    componentDidMount(){
-        let canvas = document.getElementById('thechosenone');
-        let theCtx = canvas.getContext('2d')
-        this.setState({ctx: theCtx}, this.initShapes())
-        debugger
-        this.interval()
-        // this.setState({proj})
-    }
     interval(){
         setInterval(() => this.draw(), 30)
     }
@@ -48,6 +45,10 @@ class WebCanvas extends React.Component{
     componentWillUnmount(){
         clearInterval(this.interval)
     }
+
+    // handleDoubleClick(){
+
+    // }
 
     initShapes(){
         // debugger
@@ -61,7 +62,7 @@ class WebCanvas extends React.Component{
                     'green',
                     task._id,
                     task.preReqs
-                    ))
+                    ));
             } else if (idx === taskArr.length - 1){
                 this.addShapeToArr(new Circle(
                     300,
@@ -150,56 +151,91 @@ class WebCanvas extends React.Component{
         return {x: mx, y: my}
     }
 
+    componentDidMount() {
+        let canvas = document.getElementById('thechosenone');
+        this.ctx = canvas.getContext('2d');
+        this.initShapes();
+        console.log(this.position);
+    }
+
     addShapeToArr(obj) {
+        console.log('added shape');
         let shapeArr = this.state.shapes
         shapeArr.push(obj)
-        let posArr = merge({}, this.state.position, {[obj.taskId]: [[obj.x], [obj.y]]})
+        this.position[obj.taskId] = [obj.x, obj.y];
+        let posArr = merge({}, this.position, {[obj.taskId]: [obj.x, obj.y]})
         // this.setState({valid: false})
-        debugger
+        // debugger
         this.setState({
             valid: false,
-            shapes: shapeArr,
-            position: posArr
+            shapes: shapeArr
         });
         console.log(`${this.state.valid}`)
     };
 
     clear() {
         // debugger
-        this.state.ctx.clearRect(0,0, 771, 1000)
+        this.ctx.clearRect(0,0, 771, 1000)
     }
     
-    drawLinks(currentTaskId, dependencyTaskId){
-        debugger
-        this.state.ctx.beginPath();
-        this.state.ctx.moveTo(this.state.position[currentTaskId]);
-        this.state.ctx.lineTo(this.state.position[dependencyTaskId]);
-        this.state.ctx.stroke();
+    drawLines(currentTaskId, dependencyTaskId){
+        let position = this.position
+        debugger 
+        if (position.hasOwnProperty(`${dependencyTaskId}`) && position.hasOwnProperty(`${currentTaskId}`)) {
+            this.ctx.beginPath();
+            this.ctx.moveTo(this.position[currentTaskId[0]], this.position[currentTaskId[1]]);
+            this.ctx.lineTo(this.position[dependencyTaskId[0]], this.position[dependencyTaskId[1]]);
+            this.ctx.lineWidth = 10;
+            this.ctx.strokeStyle = 'red'
+            this.ctx.stroke();
+        }
     }
+
+    // drawLinks(){
+
+    // }
 
     draw(){
         // debugger
+        let lines = false;
         if (!this.state.valid){
             // debugger
-            let ctx = this.state.ctx
+            let ctx = this.ctx
             this.clear();
             let l = this.state.shapes.length
             for(let i = 0; i < l; i++){
                 let shape = this.state.shapes[i];
                 if ((shape.r + shape.x) > this.width || (shape.y + shape.r) > this.height || shape.y - shape.r < 0 || shape.x - shape.r < 0) continue;
                 this.state.shapes[i].drawCircle(ctx);
-                debugger
-                for(let j = 0; j < shape.preReqs.length; j++){
-                    // debugger
-                    this.drawLinks(shape.taskId, shape.preReqs[j])
+                for (let j = 0; j < shape.preReqs.length; j++){
+                    this.drawLines(shape.taskId, shape.preReqs[j])
+                    if (j === shape.preReqs.length -1){
+                        lines = false
+                    }
                 }
             }
+            
             if (this.state.selection != null) {
                 // debugger
                 ctx.strokeStyle = this.state.selectionColor
                 ctx.lineWidth = this.state.selectionWidth
                 let mySel = this.state.selection
                 ctx.arc(mySel.x, mySel.y, mySel.r, mySel.sAngle, mySel.eAngle)
+            }
+
+            if (!this.state.valid && lines){
+                let ctx = this.ctx
+                let l = this.state.shapes.length
+                for(let i = 0; i < l; i++){
+                    let shape = this.state.shapes[i];
+                    if ((shape.r + shape.x) > this.width || (shape.y + shape.r) > this.height || shape.y - shape.r < 0 || shape.x - shape.r < 0) continue;
+                    for (let j = 0; j < shape.preReqs.length; j++){
+                        this.drawLines(shape.taskId, shape.preReqs[j])
+                        if (j === shape.preReqs.length -1){
+                            lines = false
+                        }
+                    }
+                }
             }
 
             this.setState(({valid: true}))
