@@ -5,6 +5,14 @@ const projects = require("./routes/api/projects");
 const tasks = require("./routes/api/tasks");
 const passport = require("passport");
 
+const path = require('path');
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('frontend/build'));
+  app.get('/', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+  })
+}
+
 require("./config/passport")(passport);
 
 const bodyParser = require('body-parser');

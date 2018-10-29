@@ -17,6 +17,7 @@ class CreateTaskFrom extends React.Component{
         this.updateDependencies = this.updateDependencies.bind(this);
     }
 
+
     handleSubmit(e){
         debugger
         e.preventDefault();
@@ -51,6 +52,7 @@ class CreateTaskFrom extends React.Component{
             </div>
             )
         });
+
 
         return(
             <div className="create-task-container">
