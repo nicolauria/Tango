@@ -77,19 +77,26 @@ class WebChart extends React.Component {
 
     render(){
 
-        // const algorithm = () => {
-        //   if ((this.props.project != undefined) && (this.props.project.tasks != undefined)) {
-        //     const tasks = {}
-        //     this.props.project.tasks.forEach(task => {
-        //       tasks[task._id] = task
-        //     })
-        //     debugger
-        //     const lastTask = this.props.project.tasks[this.props.project.tasks.length - 1]
-        //     const res = this.longest_path(lastTask, tasks);
-        //     debugger 
-        //     return res
-        //   }
-        // }
+        const algorithm = () => {
+          if ((this.props.project != undefined) && (this.props.project.tasks != undefined)) {
+            const tasks = {}
+            this.props.project.tasks.forEach(task => {
+              tasks[task._id] = task
+            })
+            debugger
+            const lastTask = this.props.project.tasks[this.props.project.tasks.length - 1]
+            const res = this.longest_path(lastTask, tasks);
+            debugger 
+            return (
+              <div>
+                <div>Best Path: </div>
+
+
+                <div>Quickest Completion: {res.best_length}</div>
+              </div>
+            )
+          }
+        }
 
         return(
             <div className="project-show-page">
@@ -107,7 +114,7 @@ class WebChart extends React.Component {
                     </div>
                     <div className="algorithm-info">
                       <div className="shortest-time">
-                     
+                        {algorithm()}
                       </div>
                       <div className="optimal-path">
                       </div>
