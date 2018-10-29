@@ -54,7 +54,7 @@ class WebChart extends React.Component{
                     <h1 className="project-tasks-title">Project Tasks</h1>
                     <div className="project-tasks">{this.fetchProjectTasks()}</div>
                 </div>
-                <WebCanvasContainer />                
+                <WebCanvasContainer project={this.props.project} />                
 
             </div>
         )
