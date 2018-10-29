@@ -120,7 +120,6 @@ function CanvasState(canvas) {
     }, true);
 
     canvas.addEventListener('dblclick', function(e){
-        // debugger
         let mouse = myState.getMouse(e);
         myState.addShape(new Circle(mouse.x, mouse.y, 25, 0, 2 * Math.PI, 'rgba(151, 216, 107, 0.3)'))
     })

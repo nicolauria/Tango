@@ -6,7 +6,7 @@ import textLogo from './textLogo.png';
 
 class NavBar extends React.Component {
     render() {
-      let { logout, currentUserName } = this.props;
+      let { logout, currentUserName, history } = this.props;
       let right = <div className="nav-right">
         <Link to="/login" >Login</Link>
         <Link to="/signup" >Register</Link>
@@ -15,8 +15,9 @@ class NavBar extends React.Component {
       
       if (this.props.currentUserName) {
         right = <ProfileDrop 
-          logout={logout} 
-          currentUserName={currentUserName} />
+          logout={ logout } 
+          currentUserName={ currentUserName }
+          history={ history } />
       }
 
       return <div className="navbar">

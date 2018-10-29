@@ -163,7 +163,11 @@ class WebCanvas extends React.Component{
         let shapeArr = this.state.shapes
         shapeArr.push(obj)
         this.position[obj.taskId] = [obj.x, obj.y];
+<<<<<<< HEAD
         // let posArr = merge({}, this.position, {[obj.taskId]: [obj.x, obj.y]})
+=======
+        let posArr = merge({}, this.position, {[obj.taskId]: [obj.x, obj.y]})
+>>>>>>> test1
         // this.setState({valid: false})
         // debugger
         this.setState({
@@ -186,7 +190,11 @@ class WebCanvas extends React.Component{
             this.ctx.moveTo(this.position[currentTaskId[0]], this.position[currentTaskId[1]]);
             this.ctx.lineTo(this.position[dependencyTaskId[0]], this.position[dependencyTaskId[1]]);
             this.ctx.lineWidth = 10;
+<<<<<<< HEAD
             this.ctx.strokeStyle = 'red';
+=======
+            this.ctx.strokeStyle = 'red'
+>>>>>>> test1
             this.ctx.stroke();
         }
     }
@@ -223,6 +231,7 @@ class WebCanvas extends React.Component{
                 ctx.arc(mySel.x, mySel.y, mySel.r, mySel.sAngle, mySel.eAngle)
             }
 
+<<<<<<< HEAD
             // if (!this.state.valid && lines){
             //     let ctx = this.ctx
             //     let l = this.state.shapes.length
@@ -237,6 +246,22 @@ class WebCanvas extends React.Component{
             //         }
             //     }
             // }
+=======
+            if (!this.state.valid && lines){
+                let ctx = this.ctx
+                let l = this.state.shapes.length
+                for(let i = 0; i < l; i++){
+                    let shape = this.state.shapes[i];
+                    if ((shape.r + shape.x) > this.width || (shape.y + shape.r) > this.height || shape.y - shape.r < 0 || shape.x - shape.r < 0) continue;
+                    for (let j = 0; j < shape.preReqs.length; j++){
+                        this.drawLines(shape.taskId, shape.preReqs[j])
+                        if (j === shape.preReqs.length -1){
+                            lines = false
+                        }
+                    }
+                }
+            }
+>>>>>>> test1
 
             this.setState(({valid: true}))
         }

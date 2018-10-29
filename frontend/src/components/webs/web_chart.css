@@ -39,7 +39,7 @@
 }
 
 .task-assigned-to {
-  margin-right: 20px;
+  margin-right: 15px;
 }
 
 .project-tasks-title,
@@ -54,4 +54,11 @@
 
 .project-team-member-count {
   margin-bottom: 10px;
+}
+
+.remove-task {
+  border: 1px solid #999;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 0px 4px;
 }
