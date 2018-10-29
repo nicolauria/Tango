@@ -16,7 +16,6 @@ const TasksReducer = (state = {}, action) => {
             });
             return newState;
         case RECEIVE_PROJECT_TASKS:
-            debugger
             newState = {}
             action.tasks.forEach(task => {
             newState[task._id] = task
@@ -30,7 +29,6 @@ const TasksReducer = (state = {}, action) => {
             return newState;
         case REMOVE_TASKS_STATE:
             return {};
-          break;
         default:
             return state;
     }
