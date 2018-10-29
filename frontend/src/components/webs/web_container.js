@@ -18,7 +18,6 @@ const mapDispatchToProps = dispatch => {
         removeTask: task => dispatch(removeTask(task)),
         fetchProjectTasks: projectId => dispatch(fetchProjectTasks(projectId)),
         removeTasks: () => dispatch(removeTasksState())
-        // fetchProject: (projectId) => this.props.fetchProject(project._id)
     };
 };
 
