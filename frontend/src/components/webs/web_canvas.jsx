@@ -99,7 +99,7 @@ class WebCanvas extends React.Component{
             let newSelCord = this.state.selection
             newSelCord.x = mx - this.state.dragxaxis; 
             newSelCord.y = my - this.state.dragyaxis; 
-
+            this.position[newSelCord.taskId] = [newSelCord.x, newSelCord.y]
             this.setState({valid: false, selection: newSelCord})
         }
     }
@@ -181,7 +181,8 @@ class WebCanvas extends React.Component{
     drawLines(currentTaskId, dependencyTaskId){
         let position = this.position
         debugger 
-        if (position.hasOwnProperty(`${dependencyTaskId}`) && position.hasOwnProperty(`${currentTaskId}`)) {
+        // if (position.hasOwnProperty(`${dependencyTaskId}`) && position.hasOwnProperty(`${currentTaskId}`)) {
+        if (!!this.position[dependencyTaskId] && !!this.position[currentTaskId]){
             this.ctx.beginPath();
             this.ctx.moveTo(this.position[currentTaskId[0]], this.position[currentTaskId[1]]);
             this.ctx.lineTo(this.position[dependencyTaskId[0]], this.position[dependencyTaskId[1]]);
@@ -197,7 +198,7 @@ class WebCanvas extends React.Component{
 
     draw(){
         // debugger
-        let lines = false;
+        // let lines = false;
         if (!this.state.valid){
             // debugger
             let ctx = this.ctx
@@ -209,9 +210,9 @@ class WebCanvas extends React.Component{
                 this.state.shapes[i].drawCircle(ctx);
                 for (let j = 0; j < shape.preReqs.length; j++){
                     this.drawLines(shape.taskId, shape.preReqs[j])
-                    if (j === shape.preReqs.length -1){
-                        lines = false
-                    }
+                    // if (j === shape.preReqs.length -1){
+                    //     lines = false
+                    // }
                 }
             }
             
