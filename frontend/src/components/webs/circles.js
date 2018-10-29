@@ -4,9 +4,9 @@
 
 //the circles default size radius center and sAngle is start always 0 the 2*math.PI is 
 // end angle which is 360 degrees but in radius
-function Circle(x, y, r, fill, title) {
-    
-    this.title = 'WOW';
+export function Circle(x, y, r, fill, taskId, preReqs) {
+    this.preReqs = preReqs
+    this.taskId = taskId;
     this.x = x || 0;
     this.y = y || 0;
     this.r = r || 15;
@@ -17,6 +17,7 @@ function Circle(x, y, r, fill, title) {
 
 // draws the circle
 Circle.prototype.drawCircle = function(ctx) {
+    
     ctx.beginPath()
     ctx.fillStyle = this.fill;
     ctx.arc(this.x, this.y, this.r, this.sAngle, this.eAngle, false)
@@ -27,9 +28,13 @@ Circle.prototype.drawCircle = function(ctx) {
 
 // is the mouse inside the circle gonna use this to drag the circle around
 Circle.prototype.contains = function(mx, my) {
-    debugger
+    console.log(`t/f: ${Math.sqrt((mx - this.x)*(mx - this.x) + (my - this.y)*(my - this.y)) < this.r}`)
+    console.log(` thisx: ${this.x}`)
+    console.log(`thisy: ${this.y}`)
+    console.log(`mouse x,y ${mx, my}`)
     return (Math.sqrt((mx - this.x)*(mx - this.x) + (my - this.y)*(my - this.y)) < this.r);
 }
+
 
 function CanvasState(canvas) {
 
@@ -49,9 +54,10 @@ function CanvasState(canvas) {
   }
     // this is to offset the box/mouse position to the correct size of the component
     // we have a nav bar and left side bar
-    let html = document.body.parentNode;
-    this.htmlTop = html.offsetTop;
-    this.htmlLeft = html.offsetLeft;
+    
+    // let html = document.body.parentNode;
+    this.htmlTop = canvas.offsetTop;
+    this.htmlLeft = canvas.offsetLeft;
 
     this.valid = false;
     this.shapes = [];
@@ -73,7 +79,7 @@ function CanvasState(canvas) {
     )
 
     canvas.addEventListener('mousedown', function(e) {
-        // debugger;
+        // ;
         let mouse = myState.getMouse(e);
         let mx = mouse.x;
         let my = mouse.y;
@@ -82,7 +88,7 @@ function CanvasState(canvas) {
         for (let i = l-1; i >= 0; i--){
             if (shapes[i].contains(mx, my)){
                 let mySel = shapes[i]
-                debugger
+                
                 // this selects the shape using the fuction we made
                 myState.dragxaxis = mx - mySel.x; 
                 myState.dragyaxis = my - mySel.y;
@@ -103,7 +109,7 @@ function CanvasState(canvas) {
         
         if (myState.dragging){
             let mouse = myState.getMouse(e);
-            debugger
+            
             myState.selection.x = mouse.x - myState.dragxaxis;
             myState.selection.y = mouse.y - myState.dragyaxis;
             myState.valid = false;
@@ -112,10 +118,10 @@ function CanvasState(canvas) {
     canvas.addEventListener('mouseup', function(e) {
         myState.dragging = false;
     }, true);
-    canvas.addEventListener('dbclick', function(e){
-        debugger
+
+    canvas.addEventListener('dblclick', function(e){
         let mouse = myState.getMouse(e);
-        myState.addCircle(new Circle(mouse.x - 10, mouse.y - 10, 20, 20, 'rgba(151, 216, 107, 0.3)'))
+        myState.addShape(new Circle(mouse.x, mouse.y, 25, 0, 2 * Math.PI, 'rgba(151, 216, 107, 0.3)'))
     })
 
     this.selectionColor = '#CC0000';
@@ -160,22 +166,27 @@ CanvasState.prototype.draw = function() {
 }
 
 CanvasState.prototype.getMouse = function(e) {
-    let element = this.canvas, offsetX = 0, offSetY = 0, mx, my;
+    
+    let element = this.canvas 
+    let offSetX = 0;
+    let offSetY = 0;
+    let mx;
+    let my;
 
-    if (element.offsetParent !== undefined) {
-        do {
-            this.offsetX += element.offsetLeft;
-            this.offsetY += element.offsetTop;
-        } while ((element = element.offsetParent));
-    }
-    debugger
-    // this.offsetX += this.stylePaddingLeft + this.styleBorderLeft + this.htmlLeft;
-    // this.offsetY += this.stylePaddingTop + this.styleBorderTop + this.htmlTop;
+    // if (element.offsetParent !== undefined) {
+    //     do {
+    //         this.offSetX += element.offsetLeft;
+    //         this.offSetY += element.offsetTop;
+    //     } while ((element = element.offsetParent));
+    // }
+    
+    this.offSetX = this.stylePaddingLeft + this.styleBorderLeft + this.htmlLeft;
+    this.offSetY = this.stylePaddingTop + this.styleBorderTop + this.htmlTop;
 
-    // mx = e.pageX - this.offsetX;
-    // my = e.pageY - this.offsetY;
-    mx = e.pageX;
-    my = e.pageY;
+    mx = e.pageX - this.offSetX;
+    my = e.pageY - this.offSetY;
+    // mx = e.pageX;
+    // my = e.pageY;
     return {x: mx, y: my};
 }
 
@@ -186,8 +197,8 @@ export function initWeb(project) {
     let s = new CanvasState(document.getElementById('canvas_field'));
     
     s.addShape(new Circle(
-        Math.floor((Math.random() * 100) + 1),
-        Math.floor((Math.random() * 100) + 1),
+        300,
+        100,
         25,
         'blue',
         // this.title
@@ -195,8 +206,8 @@ export function initWeb(project) {
 
     // project.tasks.map( task => {
     //     s.addShape(new Circle(
-    //         Math.floor(Math.random() * 100),
-    //         Math.floor(Math.random() * 100),
+    //         Math.floor(Math.random() * 700),
+    //         Math.floor(Math.random() * 1000),
     //         25,
     //         null,
     //         task.title

@@ -1,6 +1,7 @@
 import {initWeb, CanvasState} from './circles';
 import React from 'react';
 import Modal from '../modals/modal';
+import WebCanvasContainer from './web_canvas_container';
 import './web_chart.css'
 
 class WebChart extends React.Component {
@@ -10,9 +11,9 @@ class WebChart extends React.Component {
     }
 
     componentDidMount(){
-        let a = this.myCanvas
+        // let a = this.myCanvas
         // initWeb(this.props.project)
-        initWeb();
+        // initWeb();
         this.props.removeTasks();
         this.props.fetchProjectTasks(this.props.match.params.projectId)
     }
@@ -26,7 +27,7 @@ class WebChart extends React.Component {
     fetchProjectTasks() {
       if (this.props.tasks.length === 0) return null;
       const tasks = this.props.tasks.map(task => {
-        debugger
+        
         return <div className="project-task">
           <span className="remove-task" onClick={(e) => this.handleDeleteClick(e, task)}>x</span>
           <span className="task-title">{task.title}</span>
@@ -117,7 +118,8 @@ class WebChart extends React.Component {
                     <button className='create-task-button' onClick={() => this.props.openModal('create_task', [this.props.project])}>Add Task</button>
                     <div className="project-tasks">{this.fetchProjectTasks()}</div>
                 </div>
-                <canvas className="web-chart" id="canvas_field" ref={el => this.myCanvas = el} width="1000" height="1000"></canvas>
+                <WebCanvasContainer project={this.props.project} />                
+
             </div>
         )
     }

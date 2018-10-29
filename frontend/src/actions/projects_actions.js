@@ -46,11 +46,11 @@ export const createProject = (project) => dispatch => (
     ProjectApiUtil.createProject(project)
 
         .then(response => {
-            debugger
+            
             return dispatch(receiveProject(response.data))
         })
         .catch(errors => { 
-            debugger
+            
             return dispatch(receiveProjectErrors(errors))
         })
 );

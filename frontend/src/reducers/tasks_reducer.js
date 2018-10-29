@@ -16,7 +16,7 @@ const TasksReducer = (state = {}, action) => {
             });
             return newState;
         case RECEIVE_PROJECT_TASKS:
-            debugger
+            
             newState = {}
             action.tasks.forEach(task => {
             newState[task._id] = task
